@@ -38,6 +38,9 @@ gem 'faker'
 gem 'font-awesome-sass'
 # gem 'friendly_id'
 gem "responders"
+gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
+# gem 'bootstrap-sass', '~> 3.3.6'
+gem 'angular_rails_csrf'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

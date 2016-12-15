@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/doabit/semantic-ui-sass.git
+  revision: b51eed21bcdf9a918414d8ef1b57a43a783e0a39
+  specs:
+    semantic-ui-sass (2.2.6.0)
+      sass (>= 3.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -46,6 +53,8 @@ GEM
       railties (>= 4.2, < 6)
       sprockets (>= 3.0, < 5)
       tilt
+    angular_rails_csrf (2.0.0)
+      railties (>= 3, < 5.1)
     annotate (2.7.1)
       activerecord (>= 3.2, < 6.0)
       rake (>= 10.4, < 12.0)
@@ -180,6 +189,7 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers (~> 0.10.0)
   angular-rails-templates
+  angular_rails_csrf
   annotate
   bower-rails (~> 0.11.0)
   byebug
@@ -194,6 +204,7 @@ DEPENDENCIES
   rails-erd
   responders
   sass-rails (~> 5.0)
+  semantic-ui-sass!
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3
