@@ -10,6 +10,13 @@
         model.createBookmark = createBookmark;
         model.updateBookmark = updateBookmark;
 
+        //searching
+        model.bookmarkSortOrder = "-rating";
+
+        //voting
+        model.getVote = getVote;
+        model.newRating = ""
+
         function getBookmark(){
           return BookmarkFactory.getBookmark($stateParams.id)
                                 .then(function(responseData){
@@ -42,7 +49,19 @@
 
         activate();
 
+        function getVote(value, bookmark){
+          const sum = RatingFactory.getVote(value, bookmark);
+          // model.newRating = sum;
+          // return VoteFactory.getVote(value, bookmark)
+                            // .then(successResponse);
+                            // .then(function(responseData){
+                            //   debugger
+                            //   return responseData;
+                            // });
+        }
+
         function successResponse(successResponse){
+          debugger
           return successResponse.data;
         }
 
