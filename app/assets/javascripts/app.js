@@ -28,6 +28,6 @@
         template: '<show></show>'
       })
 
-    }]);//end config
+    });//end config
 
 }());
