@@ -1,5 +1,67 @@
 <h2>New Bookmark</h2>
 
-<form>  
+<form ng-submit="vm.createBookmark()" class="ui form">
+
+  <div class="inline fields">
+    <div class="one wide field">
+      <label for="display_name">Display Name</label>
+    </div>
+    <div class="eight wide field">
+      <input ng-model="vm.newBookmark.display_name" type="text" name="display_name">
+    </div>
+  </div>
+
+  <div class="inline fields">
+    <div class="one wide field">
+      <label for="description">Description</label>
+    </div>
+    <div class="eight wide field">
+      <input ng-model="vm.newBookmark.description" type="text" name="description">
+    </div>
+  </div>
+
+  <div class="inline fields">
+    <div class="one wide field">
+      <label for="source">Source</label>
+    </div>
+    <div class="eight wide field">
+      <input ng-model="vm.newBookmark.source" type="text" name="source">
+    </div>
+  </div>
+
+
+  <!-- <div class="ui form"> -->
+  <div class="inline fields">
+    <div class="one wide field">
+      <label>Source Type</label>
+    </div>
+    <div class="eight wide field">
+      <select ng-model="vm.newBookmark.source_type" class="ui search dropdown">
+        <option ng-repeat="type in vm.source_types" value="{{type}}">{{type}}</option>
+      </select>
+    </div>
+  </div>
+
+
+  <div class="inline fields">
+    <div class="one wide field">
+      <label>URL</label>
+    </div>
+    <div id="field-align" class="two wide field">
+
+<select ng-model='proto' id="select-align" class="ui fluid search dropdown" ng-options="value for value in protocals"></select>
+  <!-- <select ng-model='proto' id="select-align" class="ui fluid search dropdown">
+
+
+        <option ng-repeat="typ in vm.protocals" value="{{typ}}" ng-selected="$first">{{typ}}</option>
+
+
+      </select> -->
+    </div>
+    <div class="six wide field">
+      <input ng-model="vm.newBookmark.url" type="text" name="url">
+    </div>
+  </div>
+
   <button class="ui button" type="submit" value="create new">Create New Bookmark</button>
 </form>
