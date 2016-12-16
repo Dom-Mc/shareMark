@@ -4,5 +4,6 @@ Rails.application.routes.draw do
 
   root 'application#index'
 
-  resources :bookmarks, only: [:index, :create, :show, :update]
+  resources :bookmarks, only: [:index, :create, :show]
+  post 'bookmarks/:id', to: 'bookmarks#update'
 end

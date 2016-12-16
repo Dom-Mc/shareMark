@@ -15,6 +15,17 @@ class BookmarksController < ApplicationController
     end
   end
 
+  def update
+    bookmark = Bookmark.find(params[:id])
+    bookmark.save(bookmark_params)
+    if bookmark.save
+      render json: { success: bookmark, status: "success"}
+    else
+      render json: { errors: bookmark.errors.full_messages,
+                    status: "error" }
+    end
+  end
+
   def show
     bookmark = Bookmark.find(params[:id])
     render json: bookmark
