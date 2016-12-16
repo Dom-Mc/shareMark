@@ -1,67 +1,87 @@
-<h2>New Bookmark</h2>
+<h2 class="title">Create a Bookmark</h2>
 
-<form ng-submit="vm.createBookmark()" class="ui form">
+<div class="ui one column stackable center aligned page grid">
+  <div class="column twelve wide">
 
-  <div class="inline fields">
-    <div class="one wide field">
-      <label for="display_name">Display Name</label>
-    </div>
-    <div class="eight wide field">
-      <input ng-model="vm.newBookmark.display_name" type="text" name="display_name">
-    </div>
+    <form ng-submit="model.createBookmark()" class="ui form">
+
+      <div class="row">
+        <div class="inline fields">
+
+          <div class="three wide field">
+            <label for="display_name">Display Name</label>
+          </div>
+
+          <div class="eleven wide field">
+            <input ng-model="model.newBookmark.display_name" type="text" name="display_name" placeholder="How to use devise in rails">
+          </div>
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="inline fields">
+
+          <div class="three wide field">
+            <label for="description">Description</label>
+          </div>
+
+          <div class="eleven wide field">
+            <!-- <div class="field"> -->
+              <textarea ng-model="model.newBookmark.description" rows="3"></textarea>
+            <!-- </div> -->
+            <!-- <input ng-model="model.newBookmark.description" type="text" name="description"> -->
+          </div>
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="inline fields">
+
+          <div class="three wide field">
+            <label for="source">Source</label>
+          </div>
+
+          <div class="eleven wide field">
+            <input ng-model="model.newBookmark.source" type="text" name="source" placeholder="Stackoverflow">
+          </div>
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="inline fields">
+
+          <div class="three wide field">
+            <label>Source Type</label>
+          </div>
+
+          <div class="eleven wide field">
+            <select ng-model="model.newBookmark.source_type" ng-options="s for s in model.source_types track by $id">
+             </select>
+            <!-- <select ng-model="model.newBookmark.source_type" class="ui search dropdown">
+
+              <option ng-repeat="type in model.source_types" value="{{type}}">{{type}}</option>
+            </select> -->
+          </div>
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="inline fields">
+          <div class="three wide field">
+            <label for="url">URL</label>
+          </div>
+          <div class="eleven wide field">
+            <input ng-model="model.newBookmark.url" type="text" name="url" placeholder="www.example.com">
+          </div>
+        </div>
+      </div>
+
+
+      <button class="ui button" type="submit" value="create new">Create New Bookmark</button>
+    </form>
   </div>
-
-  <div class="inline fields">
-    <div class="one wide field">
-      <label for="description">Description</label>
-    </div>
-    <div class="eight wide field">
-      <input ng-model="vm.newBookmark.description" type="text" name="description">
-    </div>
-  </div>
-
-  <div class="inline fields">
-    <div class="one wide field">
-      <label for="source">Source</label>
-    </div>
-    <div class="eight wide field">
-      <input ng-model="vm.newBookmark.source" type="text" name="source">
-    </div>
-  </div>
-
-
-  <!-- <div class="ui form"> -->
-  <div class="inline fields">
-    <div class="one wide field">
-      <label>Source Type</label>
-    </div>
-    <div class="eight wide field">
-      <select ng-model="vm.newBookmark.source_type" class="ui search dropdown">
-        <option ng-repeat="type in vm.source_types" value="{{type}}">{{type}}</option>
-      </select>
-    </div>
-  </div>
-
-
-  <div class="inline fields">
-    <div class="one wide field">
-      <label>URL</label>
-    </div>
-    <div id="field-align" class="two wide field">
-
-<select ng-model='proto' id="select-align" class="ui fluid search dropdown" ng-options="value for value in protocals"></select>
-  <!-- <select ng-model='proto' id="select-align" class="ui fluid search dropdown">
-
-
-        <option ng-repeat="typ in vm.protocals" value="{{typ}}" ng-selected="$first">{{typ}}</option>
-
-
-      </select> -->
-    </div>
-    <div class="six wide field">
-      <input ng-model="vm.newBookmark.url" type="text" name="url">
-    </div>
-  </div>
-
-  <button class="ui button" type="submit" value="create new">Create New Bookmark</button>
-</form>
+</div>
