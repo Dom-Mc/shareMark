@@ -1,3 +1,51 @@
-<h1 class="title">Show Page - {{ model.bookmark.display_name }}</h1>
+<section>
+  <h1 class="title">Bookmark  {{ model.bookmark.display_name }}</h1>
+      <div class="ui raised centered card">
+        <div class="content">
 
-<bookmark bookmark="model.bookmark"></bookmark>
+          <div class="header">{{ model.bookmark.display_name }}</div>
+          <!-- <div class="meta">5/5/2014</div> -->
+          <!-- <div class="meta">
+          <span class="category">Animals</span>
+        </div> -->
+          <div class="ui sub header">{{ model.bookmark.source }}</div>
+          <div class="meta">
+            <span class="category">{{ model.bookmark.source_type}}</span>
+          </div>
+
+          <!-- truncate description -->
+          <div class="description">
+            <p>{{ model.bookmark.description }}</p>
+
+            <b>Labels:</b>
+            <div ng-repeat="tag in model.bookmark.tags" >
+              {{ tag.name }}
+            </div>
+
+            <!-- NOTE add pointer to url -->
+            <!-- truncate url -->
+            <a class="item" ui-sref="show" ui-sref-active="active">Create a Bookmark</a>
+            <p id="js-copyUrl"><a ng-href="{{model.bookmark.url}}" target="_blank">{{model.bookmark.url}}</a>
+              <span ngclipboard data-clipboard-text="{{ model.bookmark.url }}">
+                <i class="paste icon"></i> copy url to clipboard
+              </span>
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- creates a 'bookmark' variable to be passed into BookmarkComponent -->
+      <!-- <bookmark bookmark="bookmark"></bookmark> -->
+
+    </ul>
+</section>
+
+
+
+
+
+
+
+<!-- <bookmark bookmark="model.bookmark"></bookmark> -->
+<!-- <div ng-include="'model.bookmark.html'"></div> -->

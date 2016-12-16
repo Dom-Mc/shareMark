@@ -25,10 +25,7 @@
           <div class="content">
 
             <div class="header">{{ bookmark.display_name }}</div>
-            <!-- <div class="meta">5/5/2014</div> -->
-            <!-- <div class="meta">
-            <span class="category">Animals</span>
-          </div> -->
+
             <div class="ui sub header">{{ bookmark.source }}</div>
             <div class="meta">
               <span class="category">{{ bookmark.source_type}}</span>
@@ -47,8 +44,8 @@
               <!-- truncate url -->
               <p id="js-copyUrl"><a ng-href="{{bookmark.url}}" target="_blank">{{bookmark.url}}</a>
                 <span ngclipboard data-clipboard-text="{{ model.bookmark.url }}">
-                  <i class="paste icon"></i> copy url to clipboard
-                </span>
+              </span><br>
+              <i class="paste icon"></i> copy url to clipboard
               </p>
             </div>
           </div>
@@ -65,19 +62,11 @@
             </span>
           </div>
 
-          <!-- add an ng if to prevent link from showing up on profile -->
-          <!--  change icon-->
           <div class="ui bottom attached button" ng-click="$parent.takeVote('upVote', bookmark.id )">
-            <a ui-sref="show({id: model.bookmark.id })">
-              <i class="add icon"></i>
-              More Info
-            </a>
+              <a ui-sref="show({id: bookmark.id})">More Info</a>
           </div>
 
         </div>
-
-        <!-- creates a 'bookmark' variable to be passed into BookmarkComponent -->
-        <!-- <bookmark bookmark="bookmark"></bookmark> -->
 
       </ul>
     </div><!-- /ng-show -->

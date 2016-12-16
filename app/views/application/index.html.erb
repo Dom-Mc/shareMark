@@ -1,11 +1,15 @@
 <%# Application shell/layout %>
 
-<div class="site-content">
-  <navigation class="ui top fixed menu"></navigation>
+<!-- content wrapper for sticky footer -->
+<div class="wrapper">
 
-  <!-- MAIN CONTENT -->
-  <ui-view class="page-wrap"></ui-view>
+  <navigation class="ui top fixed menu pointing"></navigation>
 
-</div>
+  <!-- Application content -->
+  <div class="content-padding">
+    <ui-view></ui-view>
+  </div>
+
+</div><!-- /.wrapper -->
 
 <footer class="footer"></footer>

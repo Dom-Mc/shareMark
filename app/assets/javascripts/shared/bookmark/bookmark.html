@@ -34,8 +34,8 @@
 
   <!-- NOTE add pointer to click methods -->
   <div class="extra content">
-    <i ng-click="model.bookmark.getVote('upVote', bookmark)" class="left floated thumbs up icon"></i>
-    <i ng-click="model.bookmark.getVote('downVote', bookmark)" class="left floated thumbs outline down icon"></i>
+    <i ng-click="$parent.getVote('upVote', bookmark)" class="left floated thumbs up icon"></i>
+    <i ng-click="model.getVote('downVote', bookmark.id)" class="left floated thumbs outline down icon"></i>
 
     <span class="right floated star">
       <i class="check icon"></i>
@@ -45,7 +45,7 @@
 
   <!-- add an ng if to prevent link from showing up on profile -->
   <!--  change icon-->
-  <div class="ui bottom attached button" ng-click="takeVote('upVote', model.bookmark.id )">
+  <div class="ui bottom attached button" ng-click="$parent.takeVote('upVote', model.bookmark.id )">
     <a ui-sref="show({id: model.bookmark.id })">
       <i class="add icon"></i>
       More Info
