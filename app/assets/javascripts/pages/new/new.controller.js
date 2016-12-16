@@ -5,7 +5,7 @@
 
         const model = this;
         model.source_types = ["Video", "Conversation Thread", "Book/Publication", "Other", "Blog/Post"];
-        model.createBookmark = createBookmark;
+        model.saveBookmark = createBookmark;
 
         function getBookmarks(){
           return BookmarkFactory.getBookmarks()
@@ -14,8 +14,8 @@
                               });
         }
 
-        function createBookmark(){
-          return BookmarkFactory.createBookmark(model.newBookmark)
+        function saveBookmark(){
+          return BookmarkFactory.saveBookmark(model.newBookmark)
             .then(
               function(response) {
                 if(response.status == "success"){
@@ -24,7 +24,7 @@
                   return model.error = response.errors;
                 }
           });
-      }//end createBookmark
+      }//end saveBookmark
 
 }//end NewController
 

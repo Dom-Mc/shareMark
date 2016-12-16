@@ -8,56 +8,40 @@
     function RatingFactory(BookmarkFactory){
       return {
         getVote: getVote,
-        updateBookmarkRating: updateBookmarkRating,
-        runUpdate: runUpdate
+        updateBookmarkRating: updateBookmarkRating
       }
     }
 
-    function runUpdate(vote, bookmark){
-        debugger
-        getvote(vote, bookmark)
-        updateBookmarkRating(bookmark)
-      }
-
-
 
     function updateBookmarkRating(bookmark){
-      debugger
-      return BookmarkFactory.updateBookmark(bookmark)
+      return BookmarkFactory.saveBookmark(bookmark)
                             .then(function(successResponse){
-                             debugger
                              successResponse;
                            });
-
-      // return $http.get('/bookmarks')
-      //             //ajax returns a promise
-      //             .then(successResponse)
-      //             .catch(errorResponse);
     }
 
 
     function getVote(vote, bookmark){
-      const previusRating = bookmark.rating;
+      let newValue = "";
       if (vote === "upVote"){
-        return calculateUpVote(bookmark, previusRating);
+        newValue = calculateUpVote(bookmark);
       } else {
-        return calculateDownVote(bookmark, previusRating);
+        newValue = calculateDownVote(bookmark);
       }
+      return newValue;
     }
 
-    function calculateUpVote(bookmark, previusRating){
-      // debugger
-      if (bookmark.rating <= previusRating){
+    function calculateUpVote(bookmark){
+      if (bookmark.rating.valueOf() <= bookmark.previousRating.valueOf()){
         bookmark.rating++;
       } else {
         bookmark.rating--;
       }
-      debugger
       return bookmark.rating;
     }
 
     function calculateDownVote(bookmark){
-      if (bookmark.rating >= previusRating){
+      if (bookmark.rating.valueOf() >= bookmark.previousRating.valueOf()){
         bookmark.rating--;
       } else {
         bookmark.rating++;

@@ -11,8 +11,7 @@
     return {
       getBookmarks: getBookmarks,
       getBookmark: getBookmark,
-      createBookmark: createBookmark,
-      updateBookmark: updateBookmark
+      saveBookmark: saveBookmark
     }
 
     function getBookmark(id){
@@ -29,10 +28,16 @@
                   })
     }//end getBookmarks
 
-    function createBookmark(bookmark){
-      const request = {
+    function saveBookmark(bookmark){
+      let postUrl = "";
+      if (bookmark.hasOwnProperty('id')){
+        postUrl = `/bookmarks/${bookmark.id}`;
+      } else {
+        postUrl = '/bookmarks';
+      }
+      let request = {
         method: "post",
-        url: '/bookmarks',
+        url: postUrl,
         headers: {
           'Content-Type': 'application/json'
         },
@@ -46,10 +51,6 @@
                   return response.data;
                 })
     }
-
-    function updateBookmark(bookmark){
-      debugger
-    }//end updateBookmark
 
   }//end BookmarkFactory
 
