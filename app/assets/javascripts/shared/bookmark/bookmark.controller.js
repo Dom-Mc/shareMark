@@ -1,11 +1,15 @@
 (function(){
   'use strict';
 
-  function BookmarkController($stateParams, BookmarkFactory, VoteFactory) {
+  function BookmarkController($stateParams, BookmarkFactory, RatingFactory, $state) {
 
         const model = this;
-        model.source_types = ["Blog/Post", "Video", "Conversation Thread", "Book/Publication", "Other"];
-        model.source_type = "Blog";
+
+        //TODO: update
+        model.source_types = ["Video", "Conversation Thread", "Book/Publication", "Other", "Blog/Post"];
+        model.defaultSource = model.source_types[0];
+
+
         model.getBookmarks = getBookmarks;
         model.createBookmark = createBookmark;
         model.updateBookmark = updateBookmark;
@@ -27,6 +31,7 @@
         function getBookmarks(){
           return BookmarkFactory.getBookmarks()
                                 .then(function(responseData){
+                                  debugger
                                   return model.bookmarks = responseData;
                               });
         }
@@ -34,14 +39,6 @@
         function updateBookmark(){
         }
 
-        function createBookmark(){
-          return BookmarkFactory.createBookmark(model.newBookmark)
-                                .then(getBookmarks);
-          // return BookmarkFactory.createBookmark(model.newBookmark)
-          //                       .then(function(){
-          //                         $state.go('home/bookmark')
-          //                       });
-        }
 
         function activate(){
           getBookmarks();
@@ -60,10 +57,10 @@
                             // });
         }
 
-        function successResponse(successResponse){
-          debugger
-          return successResponse.data;
-        }
+        // function successResponse(successResponse){
+        //   debugger
+        //   return successResponse.data;
+        // }
 
   }
 
