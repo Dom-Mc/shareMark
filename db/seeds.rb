@@ -15,17 +15,17 @@ end
 
 40.times do
   Tag.create!(
-    name: Faker::Lorem.word
+    name: Faker::Internet.domain_word
   )
 end
 
 20.times do
   bookmark = Bookmark.create!(
-    display_name: Faker::Lorem.word, # Building rails templates
-    description: Faker::Lorem.paragraph(2, true), # "long string of random text (up to 500 characters) optional"
+    display_name: Faker::Lorem.sentence, # Building rails templates
+    description: Faker::Lorem.paragraph(4, true), # "long string of random text (up to 500 characters) optional"
     source: Faker::Internet.domain_word, # overstack
     source_type: Faker::Number.between(1, 3), #enum value ()
-    url: Faker::Internet.domain_name, # www.example.com/post5.html
+    url: Faker::Internet.url, # www.example.com/post5.html
     rating: Faker::Number.between(1, 100) # number
   )
 

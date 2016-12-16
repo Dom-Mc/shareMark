@@ -6,7 +6,7 @@ class CreateBookmarks < ActiveRecord::Migration[5.0]
       t.string :source
       t.integer :source_type
       t.string :url
-      t.integer :rating
+      t.integer :rating, default: 0, null: false
 
       t.timestamps
     end
