@@ -1,15 +1,31 @@
-<section>
-  <h1>Search Bookmarks</h1>
+<section class="state-search center-content">
 
-  <div class="flex-item">
-    <h1>Shall We Begin Our Search</h1>
+  <div class="center-text">
+    <h1>Search Bookmarks</h1>
 
-    <div class="ui fluid category search">
-      <div class="ui icon input">
-        <input type="text" name="" value="">
-        <i class="search icon"></i>
-      </div>
-      <div class="results"></div>
-    </div>
-  </div>
+    <section>
+      <h2>Shall We Begin Our Search</h2>
+
+      <div class="search ui fluid category">
+        <div class="ui icon input">
+          <input ng-model="searchQuery" class="prompt" type="text" placeholder="labels">
+          <i class="search icon"></i>
+        </div>
+      </div><!-- /.search -->
+    </section>
+
+  </div><!-- /.center-text -->
+
+  <section>
+    <div ng-show="(filteredData = (model.bookmarks | filter:searchQuery)) && searchQuery && searchQuery.length > 1">
+
+      <ul ng-repeat="bookmark in filteredData | filter: {tags:{name: searchQuery}} | orderBy: '-rating'">
+
+        <!-- creates a 'bookmark' variable to be passed into BookmarkComponent -->
+        <bookmark bookmark="bookmark"></bookmark>
+
+      </ul>
+    </div><!-- /ng-show -->
+  </section>
+
 </section>
