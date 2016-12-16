@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('shareMark', ['ui.router', 'templates', 'ngclipboard'])
+    .module('shareMark', ['ngMessages', 'ui.router', 'templates', 'ngclipboard'])
     .config(function($stateProvider, $urlRouterProvider){
 
       $urlRouterProvider.otherwise('/');

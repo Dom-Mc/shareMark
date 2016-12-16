@@ -14,6 +14,7 @@
 //= require angular
 //= require angular-ui-router
 //= require angular-rails-templates
+//= require angular-messages
 //= require semantic-ui
 //= require clipboard
 //= require ngclipboard
