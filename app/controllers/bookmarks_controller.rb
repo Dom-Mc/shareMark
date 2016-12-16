@@ -7,12 +7,11 @@ class BookmarksController < ApplicationController
 
   def create
     bookmark = Bookmark.new(bookmark_params)
-    binding.pry
     if bookmark.save
-      render json: bookmark
+      render json: { success: bookmark, status: "success"}
     else
-      render json: { errors: bookmark.errors.full_messages },
-                     status: :unprocessable_entity
+      render json: { errors: bookmark.errors.full_messages,
+                    status: "error" }
     end
   end
 
@@ -22,7 +21,6 @@ class BookmarksController < ApplicationController
   end
 
   private
-    # TODO: add strong params
     def bookmark_params
       params.require(:bookmark).permit(:display_name, :description, :source, :source_type, :url, :rating)
     end
