@@ -1,0 +1,219 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ */
+// @import "bootstrap-sprockets";
+// @import "bootstrap";
+@import "semantic-ui";
+
+
+
+
+// Global Styles
+// html {
+//   height: 100%;
+// }
+body {
+  font-size: 18px;
+}
+
+// Colors
+$github        : #333333;
+$jet           : #222222;
+$astral		     : #337AB7;
+$semi-transparent  :rgba(255,255,255,.92);
+$white         : #ffffff;
+$vapor         : #f6f6f6;
+$white-smoke   : #f5f5f5;
+$smoke         : #eeeeee; //border
+
+
+
+// Page/State Title
+.title {
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 5rem;
+}
+
+
+// Forms
+form .select{
+  margin-bottom: 10px;
+  select {
+    height: 37.8819px;
+  }
+}
+.rails-error {
+  list-style-type: none;
+  color: red;
+}
+
+// #select-align, #field-align {
+//   padding-right: 0;
+//   background: #E8E8E8;
+//       border-top-right-radius: 0px;
+//       border-bottom-right-radius: 0px;
+//       border: none;
+// }
+//
+// #field-align {
+//   .ui.form select {
+//     background: #E8E8E8;
+//   }
+// }
+
+
+// Bookmarks (ui-semantic .cards)
+.ui.cards > .card, .ui.card {
+      width: 700px;
+}
+
+
+
+// Search bar (home & search state)
+.state-home {
+  .input.ui.icon {
+    width: 100%;
+  }
+}
+
+
+
+
+
+
+// NOTE: center elements and create sticky footer
+  body {
+    // min-height: 100%;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: center;
+  }
+
+  // .flex-item {
+  //   align-self: center;
+  //   text-align: center;
+  // }
+  //
+  // .content-container {
+  //   // display: flex-1;
+  //   flex: 1;
+  //   padding: 20px;
+  //   // height: 100%
+  // }
+
+
+
+
+  //Helper classes
+  .center-text {
+    text-align: center;
+  }
+  .center-content {
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    // min-height: 0px;
+    // background: #FFFFFF;
+    padding: 0em;
+    border: none;
+    // border-radius: 0.28571429rem;
+    // box-shadow: 0px 1px 3px 0px #D4D4D5, 0px 0px 0px 1px #D4D4D5;
+    // -webkit-transition: box-shadow 0.1s ease, -webkit-transform 0.1s ease;
+    // transition: box-shadow 0.1s ease, -webkit-transform 0.1s ease;
+    // transition: box-shadow 0.1s ease, transform 0.1s ease;
+    // transition: box-shadow 0.1s ease, transform 0.1s ease, -webkit-transform 0.1s ease;
+  }
+
+
+
+
+
+
+
+
+
+//Navigation
+.content-padding {
+  // NOTE: provide padding for content under navigation
+  // padding-top: 75px;
+  padding-top: 10rem;
+
+}
+.ui.top.fixed.menu {
+  height: 5rem;
+  a {
+    font-size: 1.2rem;
+    flex-grow: 1;
+    text-align: center;
+  }
+}
+
+
+//Footer
+.footer {
+  background-color: $github;
+  font-size: 1.3rem;
+  // padding: 20px;
+  height: 75px;
+  text-align: center;
+  // margin-top: 5rem;
+}
+
+
+
+//NOTE: Sticky Footer
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  // NOTE: https://css-tricks.com/couple-takes-sticky-footer/
+  min-height: 100%;
+  /* Equal to height of footer */
+  /* But also accounting for potential margin-bottom of last child */
+  margin-bottom: -100px;
+}
+.footer {
+  height: 100px;
+}
+
+
+
+
+
+
+
+
+
+
+
+//Home State
+.state-home {
+  // margin-top: 7%;
+
+  .button {
+    margin: 2rem 0;
+  }
+}
