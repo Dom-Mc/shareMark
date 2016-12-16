@@ -1,15 +1,23 @@
+<!-- source type needs fixing -->
+
+
 <h2 class="title">Create a Bookmark</h2>
+
 
 <div class="ui one column stackable center aligned page grid">
   <div class="column twelve wide">
 
+
+<ul ng-repeat="formError in model.error" ng-if="model.error" class="rails-error">
+  <li>{{formError}}</li>
+</ul>
     <form name="form" ng-submit="model.createBookmark()" class="ui form">
 
       <section class="row">
         <div ng-messages="form.display_name.$error" ng-if="form.display_name.$touched">
           <div ng-message="required">Display Name is required.</div>
-          <div ng-message="minlength">Display Name must be more than 5 characters.</div>
-          <div ng-message="minlength">Display Name must be less than 40 characters.</div>
+          <div ng-message="minlength">Display Name must be at least 5 characters.</div>
+          <div ng-message="minlength">Display Name must be less than 75 characters.</div>
         </div>
         <div class="inline fields">
           <div class="three wide field">
@@ -18,7 +26,7 @@
           <div class="eleven wide field">
             <input ng-model="model.newBookmark.display_name" type="text" name="display_name" placeholder="How to use devise in rails"
               ng-minlength="5"
-              ng-maxlength="40"
+              ng-maxlength="75"
               required>
           </div>
         </div>
@@ -27,7 +35,7 @@
       <section class="row">
         <div ng-messages="form.description.$error" ng-if="form.description.$touched">
           <div ng-message="required">Description is required.</div>
-          <div ng-message="minlength">Description must be more than 15 characters.</div>
+          <div ng-message="minlength">Description must be at least 15 characters.</div>
           <div ng-message="minlength">Description must be less than 2500 characters.</div>
         </div>
         <div class="inline fields">
@@ -44,11 +52,10 @@
         </div>
       </section>
 
-<!-- //note name of a resource -->
       <section class="row">
         <div ng-messages="form.source.$error" ng-if="form.source.$touched">
           <div ng-message="required">Source is required.</div>
-          <div ng-message="minlength">Source must be more than 2 characters.</div>
+          <div ng-message="minlength">must be at least 3 characters.</div>
           <div ng-message="minlength">Source must be less than 50 characters.</div>
         </div>
         <div class="inline fields">
@@ -64,14 +71,19 @@
         </div>
       </section>
 
-      <section class="row">
+      <section class="select row">
+        <div ng-messages="form.source_type.$error" ng-if="form.source_type.$touched">
+          <div ng-message="required">URL is required.</div>
+        </div>
         <div class="inline fields">
           <div class="three wide field">
             <label>Source Type</label>
           </div>
           <div class="eleven wide field">
-            <select ng-model="model.newBookmark.source_type" ng-options="s for s in model.source_types track by $id">
-             </select>
+             <select ng-model="model.newBookmark.source_type" ng-options="source_types for source_types in model.source_types" required>
+               <option ng-selected="true" value="">-Select-</option>
+              </select>
+
           </div>
         </div>
       </section>
@@ -79,7 +91,7 @@
       <div class="row">
         <div ng-messages="form.url.$error" ng-if="form.url.$touched">
           <div ng-message="required">URL is required.</div>
-          <div ng-message="minlength">URL must be more than 5 characters.</div>
+          <div ng-message="minlength">URL must be at least 7 characters.</div>
           <div ng-message="minlength">URL must be less than 250 characters.</div>
         </div>
         <div class="inline fields">
@@ -92,7 +104,7 @@
         </div>
       </div>
 
-      <button ng-disabled="form.$invalid" class="ui button" type="submit" value="create new">Create New Bookmark</button>
+      <button  class="ui button" type="submit" value="create new">Create New Bookmark</button>
     </form>
   </div>
 </div>
