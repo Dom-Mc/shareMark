@@ -17,5 +17,6 @@
 //= require angular-messages
 //= require semantic-ui
 //= require clipboard
+//= require ng-tags-input
 //= require ngclipboard
 //= require_tree .

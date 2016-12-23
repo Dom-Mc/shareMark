@@ -6,4 +6,6 @@ Rails.application.routes.draw do
 
   resources :bookmarks, only: [:index, :create, :show]
   post 'bookmarks/:id', to: 'bookmarks#update'
+  get 'bookmarks/tags/:name', to: 'bookmarks#filter'
+  get 'tags', to: 'tags#index'
 end
