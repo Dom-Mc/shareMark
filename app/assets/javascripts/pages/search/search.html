@@ -1,12 +1,10 @@
 <section class="state-search center-content">
 
   <div class="center-text">
-    <h1>Search Bookmarks</h1>
+    <h1>Search for a Bookmark</h1>
 
     <section>
-      <h2>Shall We Begin Our Search</h2>
-
-      <div class="search ui fluid category">
+      <div class="search ui fluid huge category">
         <div class="ui icon input">
           <input ng-model="searchQuery" class="prompt" type="text" placeholder="labels">
           <i class="search icon"></i>
@@ -16,60 +14,75 @@
 
   </div><!-- /.center-text -->
 
-  <section>
-    <div ng-show="(filteredData = (model.bookmarks | filter:searchQuery)) && searchQuery && searchQuery.length > 1">
+  <section ng-show="(filteredData = (model.bookmarks | filter:searchQuery)) && searchQuery">
+    <ul ng-repeat="bookmark in filteredData | filter: {tags:{name: searchQuery}} | orderBy: '-rating'">
 
-      <ul ng-repeat="bookmark in filteredData | filter: {tags:{name: searchQuery}} | orderBy: '-rating'">
+      <div class="ui raised centered card">
+        <div class="content">
 
-        <div class="ui raised centered card">
-          <div class="content">
+          <div class="header">{{ bookmark.display_name }}</div>
 
-            <div class="header">{{ bookmark.display_name }}</div>
+          <div class="ui sub header">{{ bookmark.source }}</div>
+          <div class="meta">
+            <span class="category">{{ bookmark.resource_type}}</span>
+          </div>
 
-            <div class="ui sub header">{{ bookmark.source }}</div>
-            <div class="meta">
-              <span class="category">{{ bookmark.source_type}}</span>
+          <!-- truncate description -->
+          <div class="description">
+            <b>Description:</b>
+            <p>{{ bookmark.description | limitTo:250}}
+              <span ng-if="bookmark.description.length > 150">...</span>
+            </p>
+
+            <b>Tags:</b>
+            <div ng-repeat="tag in bookmark.tags" >
+              <a ui-sref="tagBookmarkList({tagName: tag.name})">
+                - {{ tag.name }}
+              </a>
             </div>
+            <br>
 
-            <!-- truncate description -->
-            <div class="description">
-              <p>{{ bookmark.description }}</p>
+            <!-- TODO: truncate url -->
+            <p id="js-copyUrl">
+              <b>URL:</b>
+              <br>
+              <a ng-href="{{'http://' + bookmark.url}}" target="_blank">
+                {{bookmark.url}}
+              </a>
+              <span ngclipboard data-clipboard-text="{{ bookmark.url }}">
+                <br>
+                <i class="paste icon"></i>
+                <span class="copy-text">copy url to clipboard</span>
+              </span>
+            </p>
 
-              <b>Labels:</b>
-              <div ng-repeat="tag in bookmark.tags" >
-                {{ tag.name }}
-              </div>
+          </div><!-- /description -->
+        </div><!-- /content -->
 
-              <!-- NOTE add pointer to url -->
-              <!-- truncate url -->
-              <p id="js-copyUrl"><a ng-href="{{bookmark.url}}" target="_blank">{{bookmark.url}}</a>
-                <span ngclipboard data-clipboard-text="{{ model.bookmark.url }}">
-              </span><br>
-              <i class="paste icon"></i> copy url to clipboard
-              </p>
-            </div>
+        <!-- NOTE add pointer to click methods -->
+        <div class="extra content">
+          <div id="vote">
+            <i ng-click="model.getVote('upVote', bookmark)" ng-class="{'outline':
+            !(bookmark.rating > bookmark.previousRating)}" class="left floated thumbs up icon large"></i>
+
+            <i ng-click="model.getVote('downVote', bookmark)" ng-class="{'outline':
+            !(bookmark.rating < bookmark.previousRating)}" class="left floated thumbs down icon large"></i>
           </div>
 
+          <span class="right floated star">
+            <i class="thumbs up icon"></i>
+            Likes {{ bookmark.rating }}
+          </span>
+        </div><!-- /.extra content -->
 
-          <!-- NOTE add pointer to click methods -->
-          <div class="extra content">
-            <i ng-click="model.getVote('upVote', bookmark)" class="left floated thumbs up icon"></i>
-            <i ng-click="model.getVote('downVote', bookmark)" class="left floated thumbs outline down icon"></i>
-
-            <span class="right floated star">
-              <i class="check icon"></i>
-              Likes {{ bookmark.rating }}
-            </span>
+        <a ui-sref="show({id: bookmark.id})">
+          <div class="ui bottom attached button">
+            More Info
           </div>
+        </a>
+      </div><!-- /ui raised centered card -->
 
-          <div class="ui bottom attached button" ng-click="$parent.takeVote('upVote', bookmark.id )">
-              <a ui-sref="show({id: bookmark.id})">More Info</a>
-          </div>
-
-        </div>
-
-      </ul>
-    </div><!-- /ng-show -->
+    </ul>
   </section>
 
 </section>
