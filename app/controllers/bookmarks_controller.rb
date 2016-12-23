@@ -11,14 +11,13 @@ class BookmarksController < ApplicationController
       render json: { success: bookmark, status: "success"}
     else
       render json: { errors: bookmark.errors.full_messages,
-                    status: "error" }
+                     status: "error" }
     end
   end
 
   def update
     bookmark = Bookmark.find(params[:id])
-    bookmark.save(bookmark_params)
-    if bookmark.save
+    if bookmark.save(bookmark_params)
       render json: { success: bookmark, status: "success"}
     else
       render json: { errors: bookmark.errors.full_messages,
@@ -31,9 +30,18 @@ class BookmarksController < ApplicationController
     render json: bookmark
   end
 
+  def filter
+    bookmarks = Bookmark.joins(:tags).where(tags: { name: params[:name] })
+    render json: bookmarks
+  end
+
   private
     def bookmark_params
-      params.require(:bookmark).permit(:display_name, :description, :source, :source_type, :url, :rating)
+      params.require(:bookmark).permit(:display_name, :description, :source, :resource_type, :url, :rating,
+      tag_attributes:[
+        tag_names: []
+        ]
+      )
     end
 
 end
