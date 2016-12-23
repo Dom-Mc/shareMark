@@ -1,0 +1,54 @@
+<section class="centered card ui raised ">
+  <div class="content">
+
+  <div class="likes">
+    <span class="right floated star">
+      <i class="thumbs up icon"></i>
+      Likes {{ model.bookmark.rating }}
+    </span>
+  </div>
+
+    <div class="header">{{ model.bookmark.display_name }}</div>
+
+    <div class="ui sub header">{{ model.bookmark.source }}</div>
+
+    <div class="meta">
+      <span class="category">{{ model.bookmark.resource_type}}</span>
+    </div>
+
+    <div class="description">
+      <b>Description:</b>
+      <p>{{ model.bookmark.description }}</p>
+
+      <b>Tags:</b>
+      <div ng-repeat="tag in model.bookmark.tags" >
+        <a ui-sref="tagBookmarkList({tagName: tag.name})">
+          - {{ tag.name }}
+        </a>
+      </div>
+      <br>
+
+      <!-- TODO: truncate url -->
+      <p id="js-copyUrl">
+        <b>URL:</b>
+        <br>
+        <a ng-href="{{'http://' + model.bookmark.url}}" target="_blank">
+          {{model.bookmark.url}}
+        </a>
+        <span ngclipboard data-clipboard-text="{{ model.bookmark.url }}">
+          <br>
+          <i class="paste icon"></i>
+          <span class="copy-text">copy url to clipboard</span>
+        </span>
+      </p>
+
+    </div><!-- /.description -->
+  </div><!-- /.content -->
+
+  <!-- <a ui-sref="show({id: model.bookmark.id })">
+    <div class="ui bottom attached button">
+      More Info
+    </div>
+  </a> -->
+
+</section>

@@ -1,110 +1,113 @@
-<!-- source type needs fixing -->
+<main class="state-new">
+  <h2 class="title">Create a Bookmark</h2>
 
+  <div class="ui raised very padded text container segment">
+    <ul ng-repeat="formError in model.error" ng-if="model.error" class="rails-error">
+      <li>{{formError}}</li>
+    </ul>
 
-<h2 class="title">Create a Bookmark</h2>
+    <form name="form" ng-submit="model.saveBookmark()" class="ui form">
 
-
-<div class="ui one column stackable center aligned page grid">
-  <div class="column twelve wide">
-
-
-<ul ng-repeat="formError in model.error" ng-if="model.error" class="rails-error">
-  <li>{{formError}}</li>
-</ul>
-    <form name="form" ng-submit="model.createBookmark()" class="ui form">
-
-      <section class="row">
-        <div ng-messages="form.display_name.$error" ng-if="form.display_name.$touched">
+      <!-- Display Name input-->
+      <section>
+        <div class="warning"  ng-messages="form.display_name.$error" ng-if="form.display_name.$touched">
           <div ng-message="required">Display Name is required.</div>
           <div ng-message="minlength">Display Name must be at least 5 characters.</div>
           <div ng-message="minlength">Display Name must be less than 75 characters.</div>
-        </div>
-        <div class="inline fields">
-          <div class="three wide field">
-            <label for="display_name">Display Name</label>
-          </div>
-          <div class="eleven wide field">
-            <input ng-model="model.newBookmark.display_name" type="text" name="display_name" placeholder="How to use devise in rails"
-              ng-minlength="5"
-              ng-maxlength="75"
-              required>
-          </div>
-        </div>
+        </div><!-- /ng-message -->
+
+        <div class="field ui">
+          <label for="display_name">Display Name</label>
+          <div class="icon ui right input">
+            <input ng-model="model.newBookmark.display_name" type="text" name="display_name" placeholder="Descriptive name" ng-minlength="5" ng-maxlength="75" required>
+            <i ng-class="[model.validationClass(form.display_name) ]"></i>
+          </div><!-- /.icon -->
+        </div><!-- /.field -->
       </section>
 
-      <section class="row">
-        <div ng-messages="form.description.$error" ng-if="form.description.$touched">
+      <!-- Description textarea-->
+      <section>
+        <div class="warning"  ng-messages="form.description.$error" ng-if="form.description.$touched">
           <div ng-message="required">Description is required.</div>
           <div ng-message="minlength">Description must be at least 15 characters.</div>
           <div ng-message="minlength">Description must be less than 2500 characters.</div>
-        </div>
-        <div class="inline fields">
-          <div class="three wide field">
-            <label for="description">Description</label>
-          </div>
-          <div class="eleven wide field">
-            <textarea name="description" ng-model="model.newBookmark.description" rows="3"
-              ng-minlength="15"
-              ng-maxlength="2500"
-              required>
-            </textarea>
-          </div>
-        </div>
+        </div><!-- /ng-message -->
+
+        <div class="ui field">
+          <i ng-class="[model.validationClass(form.description) ]" class="float-right"></i>
+          <label for="description">Description</label>
+          <textarea name="description" ng-model="model.newBookmark.description" rows="3" ng-minlength="15" ng-maxlength="2500" placeholder="Provide a detailed description about the bookmark" required>
+          </textarea>
+        </div><!-- /.field -->
       </section>
 
-      <section class="row">
-        <div ng-messages="form.source.$error" ng-if="form.source.$touched">
+      <!-- Source input-->
+      <section>
+        <div class="warning"  ng-messages="form.source.$error" ng-if="form.source.$touched">
           <div ng-message="required">Source is required.</div>
-          <div ng-message="minlength">must be at least 3 characters.</div>
+          <div ng-message="minlength">Source must be at least 3 characters.</div>
           <div ng-message="minlength">Source must be less than 50 characters.</div>
-        </div>
-        <div class="inline fields">
-          <div class="three wide field">
-            <label for="source">Source</label>
-          </div>
-          <div class="eleven wide field">
-            <input ng-model="model.newBookmark.source" type="text" name="source" placeholder="Stackoverflow"
-              ng-minlength="2"
-              ng-maxlength="50"
-              required>
-          </div>
-        </div>
+        </div><!-- /ng-message -->
+
+        <div class="ui field">
+          <label for="source">Source</label>
+          <div class="icon ui right input">
+            <input ng-model="model.newBookmark.source" type="text" name="source" placeholder="Name of the source" ng-minlength="3" ng-maxlength="50" required>
+            <i ng-class="[model.validationClass(form.source) ]"></i>
+          </div><!-- /.icon -->
+        </div><!-- /.field -->
       </section>
 
-      <section class="select row">
-        <div ng-messages="form.source_type.$error" ng-if="form.source_type.$touched">
-          <div ng-message="required">URL is required.</div>
-        </div>
-        <div class="inline fields">
-          <div class="three wide field">
-            <label>Source Type</label>
-          </div>
-          <div class="eleven wide field">
-             <select ng-model="model.newBookmark.source_type" ng-options="source_types for source_types in model.source_types" required>
-               <option ng-selected="true" value="">-Select-</option>
-              </select>
+      <section>
+        <div class="warning" ng-messages="form.resource_type.$error" ng-if="form.resource_type.$touched">
+          <div ng-message="required">Type of Resource is required.</div>
+        </div><!-- /ng-message -->
 
-          </div>
-        </div>
+        <div class="ui field">
+          <!-- <i ng-class="[model.validationClass(form.resource_type) ]" class="float-right"></i> -->
+          <label for="resource_type">Type of Resource</label>
+          <select name="resource_type" ng-model="model.newBookmark.resource_type" ng-options="resource_types for resource_types in model.resource_types" required class="ui search dropdown">
+            <option ng-selected="true" value="">-Select-</option>
+          </select>
+        </div><!-- /.field -->
       </section>
 
-      <div class="row">
-        <div ng-messages="form.url.$error" ng-if="form.url.$touched">
+      <!-- {{ ng-if model.newBookmark.tag.length > 0 && model.newBookmark.tag}} -->
+      <section id="ngtaginput">
+        <div class="warning" ng-messages="form.resource_type.$error" ng-if="form.resource_type.$touched">
+          <div ng-message="required">Type of Resource is required.</div>
+        </div><!-- /ng-message -->
+
+
+        <label for="tag">Tags</label>
+        <tags-input ng-model="model.newBookmark.tag" class="ngtaginput-error" display-property="name" placeholder="Add a label" max-results-to-show="50" min-length="2" max-length="45" min-tags="1" max-tags="5" add-on-space="false" add-on-comma="true" add-on-blur="true" add-on-paste="true" required>
+
+          <auto-complete source="model.loadTags($query)" debounce-delay="0" load-on-down-arrow="true" min-length="0" max-results-to-show="100" ></auto-complete>
+
+        </tags-input>
+      </section>
+
+      <section>
+        <div class="warning" ng-messages="form.url.$error" ng-if="form.url.$touched">
           <div ng-message="required">URL is required.</div>
-          <div ng-message="minlength">URL must be at least 7 characters.</div>
+          <div ng-message="minlength">URL must be at least 5 characters.</div>
           <div ng-message="minlength">URL must be less than 250 characters.</div>
         </div>
-        <div class="inline fields">
-          <div class="three wide field">
-            <label for="url">URL</label>
-          </div>
-          <div class="eleven wide field">
-            <input ng-model="model.newBookmark.url" type="text" name="url" placeholder="www.example.com" required="required">
-          </div>
-        </div>
-      </div>
+        <!-- /ng-message -->
 
-      <button  class="ui button" type="submit" value="create new">Create New Bookmark</button>
-    </form>
-  </div>
-</div>
+        <div class="ui field">
+          <label for="url">URL</label>
+          <div class="icon ui right input">
+            <input ng-model="model.newBookmark.url" type="text" name="url" placeholder="Link to the bookmark" ng-minlength="5" ng-maxlength="250" required>
+            <i ng-class="[model.validationClass(form.url) ]" class="float-right"></i>
+          </div><!-- /.field -->
+        </section>
+
+
+        <div class="row pad">
+          <button ng-disabled="form.$invalid" class="ui linkedin button" type="submit" value="create new">Create New Bookmark</button>
+        </div>
+
+      </form>
+    </div>
+  </main>
