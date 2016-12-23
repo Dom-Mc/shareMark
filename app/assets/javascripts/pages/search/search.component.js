@@ -6,10 +6,12 @@
     controllerAs: 'model',
 
     controller: function(BookmarkFactory, RatingFactory){
+
       const model = this;
       model.getBookmarks = getBookmarks;
       model.bookmarkSortOrder = "-rating";
       model.getVote = getVote;
+
       model.$onInit = function () {
         getBookmarks();
       };
@@ -21,6 +23,7 @@
                             });
       }//getBookmarks
 
+      // NOTE: record and limit votes
       function getVote(value, bookmark){
         if (!bookmark.hasOwnProperty('previousRating')){
           bookmark.previousRating = bookmark.rating
@@ -33,11 +36,6 @@
           return response.data;
         });
       }//end getVote
-
-      model.addToList = addToList;
-      function addToList(){
-        debugger
-      }
 
     }//end controller
 
