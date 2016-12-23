@@ -23,11 +23,11 @@ ActiveRecord::Schema.define(version: 20161205002653) do
     t.string   "display_name"
     t.text     "description"
     t.string   "source"
-    t.integer  "source_type"
+    t.integer  "resource_type"
     t.string   "url"
-    t.integer  "rating",       default: 0, null: false
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.integer  "rating",        default: 0, null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "tags", force: :cascade do |t|

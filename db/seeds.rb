@@ -13,24 +13,88 @@
   table.delete_all
 end
 
-40.times do
-  Tag.create!(
-    name: Faker::Internet.domain_word
-  )
+tags = [
+  'ActionScript',
+  'Algorithm',
+  'Array',
+  'API',
+  'Babel',
+  'Background thread',
+  'Batch job',
+  'Binary Search',
+  'Branch',
+  'Bug tracking',
+  'CoffeeScript',
+  'Concatenation',
+  'Control flow',
+  'CSS',
+  'Cygwin',
+  'Debug',
+  'Django',
+  'DOM',
+  'ECMAScript',
+  'Encapsulation',
+  'Eval',
+  'Events',
+  'Exception handling',
+  'Hash',
+  'Haskell',
+  'Heap',
+  'HTML',
+  'IDE',
+  'Inheritance',
+  'Java',
+  'JavaScript',
+  'JSON',
+  'Karel',
+  'Lambda',
+  'LISP',
+  'Middleware',
+  'Module',
+  'NaN',
+  'Node.js',
+  'Nodelist',
+  'Null',
+  'Object-oriented programming',
+  'Objective-C',
+  'Perl',
+  'PHP',
+  'Polymorphism',
+  'Python',
+  'Rails',
+  'Recursion',
+  'Recursive',
+  'Regex',
+  'Regular expression',
+  'Reserved word',
+  'Ruby',
+  'Seed',
+  'SOAP',
+  'Socket',
+  'SQL',
+  'Tuple',
+  'Unit test',
+  'VIM',
+  'Web development',
+  'XML',
+]
+
+tags.each do |tag|
+  Tag.create!(name: tag.downcase)
 end
 
-20.times do
+200.times do
   bookmark = Bookmark.create!(
-    display_name: Faker::Lorem.sentence, # Building rails templates
-    description: Faker::Lorem.paragraph(4, true), # "long string of random text (up to 500 characters) optional"
+    display_name: (Faker::Lorem.sentence).chop, # Building rails templates
+    description: Faker::Lorem.paragraph(1, true, 20), # "long string of random text (up to 2500 characters) optional"
     source: Faker::Internet.domain_word, # overstack
-    source_type: Faker::Number.between(1, 3), #enum value ()
-    url: Faker::Internet.url, # www.example.com/post5.html
-    rating: Faker::Number.between(1, 100) # number
+    resource_type: Faker::Number.between(1, 3), #enum value ()
+    url: (Faker::Internet.domain_word + '.' + Faker::Internet.domain_suffix + '/') + Faker::Internet.slug(nil, '/'), # www.example.com/post5.html
+    rating: Faker::Number.between(1, 1000), # number
   )
 
-  4.times do
-    bookmark.tags << Tag.find(Faker::Number.between(Tag.first.id, Tag.last.id))
+  5.times do
+    bookmark.tags << Tag.find(rand(Tag.first.id..Tag.last.id))
   end
 
 end

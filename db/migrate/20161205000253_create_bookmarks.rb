@@ -4,7 +4,7 @@ class CreateBookmarks < ActiveRecord::Migration[5.0]
       t.string :display_name
       t.text :description
       t.string :source
-      t.integer :source_type
+      t.integer :resource_type
       t.string :url
       t.integer :rating, default: 0, null: false
 
