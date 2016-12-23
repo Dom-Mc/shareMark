@@ -11,9 +11,9 @@
  * It is generally better to create a new file per style scope.
  *
  */
-// @import "bootstrap-sprockets";
-// @import "bootstrap";
+
 @import "semantic-ui";
+// *= require ng-tags-input
 
 
 
@@ -36,7 +36,12 @@ $vapor         : #f6f6f6;
 $white-smoke   : #f5f5f5;
 $smoke         : #eeeeee; //border
 
-
+.center-vertical {
+  position: relative;
+  top: 50%;
+  color: $smoke;
+  // transform: translateY(-50%);
+}
 
 // Page/State Title
 .title {
@@ -46,16 +51,36 @@ $smoke         : #eeeeee; //border
 }
 
 
-// Forms
+.float-right {
+  float: right;
+}
+i.float-right {
+  margin-right: 9px;
+}
+
+
+
+// FORMS
 form .select{
   margin-bottom: 10px;
   select {
     height: 37.8819px;
   }
 }
+form {
+  section {
+    margin-top: 1.75rem;
+  }
+}
 .rails-error {
   list-style-type: none;
   color: red;
+}
+
+.warning > div {
+  color: red;
+  margin-top: 10px;
+  text-align: center;
 }
 
 // #select-align, #field-align {
@@ -72,12 +97,91 @@ form .select{
 //   }
 // }
 
+//ngTagsInput module
+#ngtaginput {
+  input {
+    margin: 2px;
+    padding: 0 0 0 5px;
+    float: left;
+    height: 26px;
+    border: none;
+    transition: color 0.1s ease;
+    vertical-align: middle;
+  }
+
+  tags-input .tags .tag-item{
+    color: #fff;
+    background: #428bca;
+    border: 1px solid #357ebd;
+    border-radius: 4px;
+  }
+
+  label {
+    display: block;
+    margin: 0em 0em 0.28571429rem 0em;
+    color: rgba(0, 0, 0, 0.87);
+    font-size: 0.92857143em;
+    font-weight: bold;
+    text-transform: none;
+  }
+
+  .ngtaginput-error.ng-pristine .tags {
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    border: 1px solid #ccc;
+  }
+
+  .ngtaginput-error.ng-pristine.ng-empty.ng-touched {
+    border: 1px solid red;
+  }
+  .host {
+    margin: 0;
+  }
+}
+
 
 // Bookmarks (ui-semantic .cards)
 .ui.cards > .card, .ui.card {
-      width: 700px;
+      width: 750px;
+}
+.ui.raised.centered.card {
+  z-index: 100;
+  margin-bottom: 5rem;
+}
+.ui.bottom.attached.button {
+  background: $astral;
+  color: $smoke;
 }
 
+
+
+// Voting Icons
+#vote {
+  cursor: pointer;
+  // body > div > div > ui-view > search > section > section > div > ul:nth-child(1) > div > div.extra.content > div > i.left.floated.thumbs.up.icon.large {
+  //   transition: all .2s ease-in-out;
+  //   transform: scale(1.1);
+  // }
+  .thumbs.icon {
+    transition: all .2s ease-in-out;
+    color: rgba(0, 0, 0, 0.6);
+  }
+  .thumbs.icon:hover {
+    transform: scale(1.5);
+  }
+
+  .thumbs.icon:not(.outline) {
+    color: $astral;
+  }
+
+}
+
+
+#js-copyUrl {
+    cursor: pointer;
+  .copy-text {
+    color: #AAAAAA;
+  }
+}
 
 
 // Search bar (home & search state)
@@ -89,7 +193,23 @@ form .select{
 
 
 
+.state-new {
+  .ui.container.segment {
+    margin-bottom: 15%;
+    z-index: 100;
+    form {
+      .pad {
+          padding: 1rem 9rem 0;
+        button {
+          padding: 1rem;
+          width: 94%;
+          margin-top: 2rem;
+        }
+      }
+    }
+  }
 
+}
 
 
 // NOTE: center elements and create sticky footer
@@ -200,20 +320,91 @@ html, body {
 }
 
 
+/// STATES ///
 
-
-
-
-
-
-
-
-
-//Home State
+//HOME STATE
 .state-home {
   // margin-top: 7%;
 
-  .button {
-    margin: 2rem 0;
+  .button, .ui.button:hover {
+    margin: 2rem 10rem;
+    background: $astral;
+    color: $smoke;
+    // margin-left: 10rem;
+    // margin-right: 10rem;
   }
+
+  .main-title {
+    font-size: 4rem;
+    i {
+      margin-left: -5px;
+    }
+  }
+  .tag-line {
+    margin-top:0;
+  }
+  .logo-start {
+
+  }
+
+  .logo-end {
+
+  }
+}
+
+//Tags State
+.state-tags {
+  // TODO: add to all states
+  // .centered.card.ui.raised {
+  //   margin-bottom: 15%;
+  // }
+  font-size: 1.6rem;
+  .logo {
+    //decrease font weight
+    font-weight: 400;
+  }
+
+  .ui.horizontal.divider.header{
+    width: 75%;
+    text-align: center;
+    margin: auto;
+    margin-bottom: 3rem;
+  }
+
+  .ui.raised.very.padded.text.container.segment {
+    padding: 3rem 6rem;
+    margin-bottom: 15%;
+    .item {
+      font-size: 1.5rem;
+      margin-bottom: .75rem;
+    }
+    z-index: 100;
+  }
+}
+
+
+//SEARCH STATE
+.state-search {
+  z-index: 100;
+  .search .ui {
+    margin-bottom: 5rem;
+  }
+}
+
+//STATE SHOW
+.state-show {
+  .centered.card.ui.raised {
+    margin-bottom: 15%;
+  }
+  .ui.horizontal.divider.header{
+    width: 75%;
+    text-align: center;
+    margin: auto;
+    margin-bottom: 3rem;
+  }
+}
+
+// Bookmark-Details
+.likes {
+  color: rgba(0, 0, 0, 0.4);
 }
