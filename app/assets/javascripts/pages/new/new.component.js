@@ -4,7 +4,7 @@
   const New = {
     templateUrl: 'pages/new/new.html',
     controllerAs: 'model',
-    controller: function(BookmarkFactory, TagFactory, $state){
+    controller: function(BookmarkFactory, TagFactory, $state, $q){
 
       const model = this;
       model.saveBookmark = saveBookmark;
@@ -19,14 +19,15 @@
         }
       }
 
-      // NOTE: ngTagsInput module
-      function loadTags(query) {
-        model.testing = "clicked";
+      // TODO: look into add cache for search
+      function loadTags($query) {
         return TagFactory.getTags()
-                         .then(function(response){
-                           return response;
-                         });
-      }//end loadTags
+        .then(function(response) {
+          return response.filter(function(tag) {
+            return tag.name.toLowerCase().indexOf($query.toLowerCase()) != -1;
+          });
+        });
+      };
 
       // NOTE: save new bookmarks
       function saveBookmark(){
