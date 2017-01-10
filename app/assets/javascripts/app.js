@@ -4,11 +4,11 @@
   angular
     .module('shareMark', ['ngMessages', 'ui.router', 'templates', 'ngclipboard', 'ngTagsInput'])
 
-    .config(function($stateProvider, $urlRouterProvider, $locationProvider){
-
+    .config(function($httpProvider, $urlRouterProvider, $stateProvider){
+      $httpProvider.useApplyAsync(true);
       $urlRouterProvider.otherwise('/');
+      
       $stateProvider
-
       .state('home', {
         url: "/",
         template: "<home></home>"
