@@ -1,13 +1,15 @@
-(function(){
-  'use strict'
+'use strict';
 
-  const Search = {
+(function () {
+  'use strict';
+
+  var Search = {
     templateUrl: 'pages/search/search.html',
     controllerAs: 'model',
 
-    controller: function(BookmarkFactory, RatingFactory){
+    controller: function controller(BookmarkFactory, RatingFactory) {
 
-      const model = this;
+      var model = this;
       model.getBookmarks = getBookmarks;
       model.bookmarkSortOrder = "-rating";
       model.getVote = getVote;
@@ -16,33 +18,30 @@
         getBookmarks();
       };
 
-      function getBookmarks(){
+      function getBookmarks() {
         return BookmarkFactory.getBookmarks()
-                              .then(function(responseData){
-                                return model.bookmarks = responseData;
-                            });
-      }//getBookmarks
+          .then(function (responseData) {
+            return model.bookmarks = responseData;
+          });
+      } //getBookmarks
 
       // NOTE: record and limit votes
-      function getVote(value, bookmark){
-        if (!bookmark.hasOwnProperty('previousRating')){
-          bookmark.previousRating = bookmark.rating
+      function getVote(value, bookmark) {
+        if (!bookmark.hasOwnProperty('previousRating')) {
+          bookmark.previousRating = bookmark.rating;
         }
 
-        const newVote = RatingFactory.getVote(value, bookmark);
+        var newVote = RatingFactory.getVote(value, bookmark);
 
-        return BookmarkFactory.saveBookmark(bookmark)
-        .then(function(response){
+        return BookmarkFactory.saveBookmark(bookmark).then(function (response) {
           return response.data;
         });
-      }//end getVote
+      } //end getVote
+    } //end controller
 
-    }//end controller
-
-  }//end Search
+  }; //end Search
 
   angular
     .module("shareMark")
     .component("search", Search);
-
-}());
+})();

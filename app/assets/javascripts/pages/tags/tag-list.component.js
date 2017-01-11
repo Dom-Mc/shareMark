@@ -1,31 +1,31 @@
-(function(){
-  'use strict'
+'use strict';
 
-  const TagList = {
+(function () {
+  'use strict';
+
+  var TagList = {
     templateUrl: 'pages/tags/tag-list.html',
     controllerAs: 'model',
 
-    controller: function(TagFactory){
-      const model = this;
+    controller: function controller(TagFactory) {
+      var model = this;
       model.getTags = getTags;
-      
+
       model.$onInit = function () {
         getTags();
       };
 
-      function getTags(){
+      function getTags() {
         return TagFactory.getTags()
-                         .then(function(responseData){
-                           return model.tags = responseData;
-                         });
-      }//end getTags
+          .then(function (responseData) {
+            return model.tags = responseData;
+          });
+      } //end getTags
+    } //end controller
 
-    }//end controller
-
-  }//end TagList
+  }; //end TagList
 
   angular
     .module("shareMark")
     .component("tagList", TagList);
-
-}());
+})();

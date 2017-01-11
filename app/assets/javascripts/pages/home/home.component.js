@@ -1,12 +1,13 @@
-(function(){
-  'use strict'
+'use strict';
 
-  const Home = {
+(function () {
+  'use strict';
+
+  var Home = {
     templateUrl: 'pages/home/home.html'
-  }
+  };
 
   angular
     .module("shareMark")
     .component("home", Home);
-
-}());
+})();

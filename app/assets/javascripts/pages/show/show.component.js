@@ -1,31 +1,31 @@
-(function(){
-  'use strict'
+'use strict';
 
-  const Show = {
+(function () {
+  'use strict';
+
+  var Show = {
     templateUrl: 'pages/show/show.html',
     controllerAs: 'model',
 
-    controller: function(BookmarkFactory, $stateParams){
-      const model = this;
+    controller: function controller(BookmarkFactory, $stateParams) {
+      var model = this;
       model.getBookmark = getBookmark;
-      
-      model.$onInit = function() {
+
+      model.$onInit = function () {
         getBookmark();
       };
 
-      function getBookmark(){
+      function getBookmark() {
         return BookmarkFactory.getBookmark($stateParams.id)
-                              .then(function(responseData){
-                                return model.bookmark = responseData;
-                              });
-      }//end getBookmark
+          .then(function (responseData) {
+            return model.bookmark = responseData;
+          });
+      } //end getBookmark
+    } //end controller
 
-    }//end controller
-
-  }//end Show
+  }; //end Show
 
   angular
     .module("shareMark")
     .component("show", Show);
-
-}());
+})();

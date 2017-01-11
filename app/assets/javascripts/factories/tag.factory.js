@@ -1,22 +1,21 @@
-(function(){
-  'use strict'
+'use strict';
 
-    function TagFactory($http){
-      return {
-        getTags: getTags
-      }
+(function () {
+  'use strict';
 
-      function getTags(){
-        return $http.get('/tags')
-                    .then(function(response){
-                      return response.data;
-                    })
-      }//end getTags
+  function TagFactory($http) {
+    return {
+      getTags: getTags
+    };
 
-  }//end TagFactory
+    function getTags() {
+      return $http.get('/tags').then(function (response) {
+        return response.data;
+      });
+    } //end getTags
+  } //end TagFactory
 
   angular
     .module('shareMark')
     .factory('TagFactory', TagFactory);
-
-}());
+})();

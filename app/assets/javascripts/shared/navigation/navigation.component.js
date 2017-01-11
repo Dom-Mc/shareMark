@@ -1,12 +1,13 @@
-(function(){
-  'use strict'
+'use strict';
 
-  const Navigation = {
-      templateUrl: 'shared/navigation/navigation.html'
-  }
+(function () {
+    'use strict';
 
-  angular
-    .module("shareMark")
-    .component("navigation", Navigation);
+    var Navigation = {
+        templateUrl: 'shared/navigation/navigation.html'
+    };
 
-}());
+    angular
+      .module("shareMark")
+      .component("navigation", Navigation);
+})();

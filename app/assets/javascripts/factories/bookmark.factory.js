@@ -1,60 +1,59 @@
-(function(){
+'use strict';
+
+(function () {
   'use strict';
 
-  function BookmarkFactory($http, $stateParams){
+  function BookmarkFactory($http, $stateParams) {
     return {
       getBookmarks: getBookmarks,
       getBookmark: getBookmark,
       getTaggedBookmarks: getTaggedBookmarks,
       saveBookmark: saveBookmark
-    }
+    };
 
     // NOTE: retrieves an individual bookmark
-    function getBookmark(id){
-      return $http.get('bookmarks/' + id)
-                  .then(function(response){
-                    return response.data;
-                  });
+    function getBookmark(id) {
+      return $http.get('bookmarks/' + id).then(function (response) {
+        return response.data;
+      });
     }
 
     // NOTE: retrieves a collection of bookmarks
-    function getBookmarks(){
-      return $http.get('/bookmarks')
-                  .then(function(response){
-                    return response.data;
-                  });
-    }//end getBookmarks
+    function getBookmarks() {
+      return $http.get('/bookmarks').then(function (response) {
+        return response.data;
+      });
+    } //end getBookmarks
 
-    function getTaggedBookmarks(){
-        return $http.get('bookmarks/tags/' + $stateParams.tagName)
-                            .then(function(responseData){
-                              return responseData.data;
-                            });
-    }//end getBookmarks
+    function getTaggedBookmarks() {
+      return $http.get('bookmarks/tags/' + $stateParams.tagName).then(function (responseData) {
+        return responseData.data;
+      });
+    } //end getBookmarks
 
 
     // NOTE: create or update bookmarks
-    function saveBookmark(bookmark){
-      let postUrl;
+    function saveBookmark(bookmark) {
+      var postUrl = void 0;
       // let request;
-      let bookmarkData;
+      var bookmarkData = void 0;
 
       // NOTE: updating an exsisting bookmark (rating)
-      if (bookmark.hasOwnProperty('id')){
-        postUrl = `/bookmarks/${bookmark.id}`;
+      if (bookmark.hasOwnProperty('id')) {
+        postUrl = '/bookmarks/' + bookmark.id;
 
         bookmarkData = {
           bookmark: {
             rating: bookmark.rating
-                    }
+          }
         };
 
-      // NOTE: creating new bookmark
+        // NOTE: creating new bookmark
       } else {
 
         postUrl = '/bookmarks';
-        const bookmarkTagNames = bookmark.tag.map(function(tag){
-          return tag['name']
+        var bookmarkTagNames = bookmark.tag.map(function (tag) {
+          return tag['name'];
         });
 
         bookmarkData = {
@@ -68,29 +67,25 @@
               tag_names: bookmarkTagNames
             }
           }
-        };//end bookmarkData
+        }; //end bookmarkData
+      } //else
 
-      }//else
-
-      const request = {
+      var request = {
         method: "post",
         url: postUrl,
         headers: {
           'Content-Type': 'application/json'
         },
         data: bookmarkData
-      };//end request
+      }; //end request
 
-      return $http(request)
-                .then(function(response){
-                  return response.data;
-                });
-
-    }//end saveBookmark
-  }//end BookmarkFactory
+      return $http(request).then(function (response) {
+        return response.data;
+      });
+    } //end saveBookmark
+  } //end BookmarkFactory
 
   angular
     .module('shareMark')
     .factory('BookmarkFactory', BookmarkFactory);
-
-}());
+})();
