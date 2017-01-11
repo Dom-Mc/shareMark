@@ -7,7 +7,7 @@
     .config(function($httpProvider, $urlRouterProvider, $stateProvider){
       $httpProvider.useApplyAsync(true);
       $urlRouterProvider.otherwise('/');
-      
+
       $stateProvider
       .state('home', {
         url: "/",
@@ -33,12 +33,6 @@
         url: "/tags/:tagName",
         template: "<tag-bookmark-list></tag-bookmark-list>"
       })
-
-      // TODO: add endpoint to retrieve source_types
-      // .state('sourceType', {
-      //   url: "/bookmarks/type/:source_type",
-      //   template: "<source></source>"
-      // })
 
       .state('show', {
         url: '/bookmarks/:id',
