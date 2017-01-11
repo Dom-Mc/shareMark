@@ -27,11 +27,27 @@ $smoke         : #eeeeee; //border
   // transform: translateY(-50%);
 }
 
+// .truncate {
+//   width: 25px;
+//   white-space: nowrap;
+//   overflow: hidden;
+//   text-overflow: ellipsis;
+// }
+
+.capitalize {
+  text-transform: capitalize;
+}
+
 // Page/State Title
 .title {
-  text-align: center;
   font-size: 3rem;
   margin-bottom: 5rem;
+  text-align: center;
+}
+.state-search .title {
+  font-size: 4rem;
+  margin-bottom: 3rem;
+  text-align: center;
 }
 
 // NOTE: change later
@@ -170,6 +186,8 @@ form {
     cursor: pointer;
   .copy-text {
     color: #AAAAAA;
+    font-size: 1rem;
+    margin-top: 5px;
   }
 }
 
@@ -287,7 +305,7 @@ form {
   font-size: 1.3rem;
   height: 75px;
   text-align: center;
-  
+
   i.square.large.icon {
     width: 1.3rem;
     vertical-align: baseline;
@@ -401,7 +419,66 @@ html, body {
   }
 }
 
+
+// add to font stack
+// font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif;
+
+#bookmark-list {
+  color: rgba(0, 0, 0, 0.68);
+  padding: 0;
+  .content {
+    padding: 2rem;
+  }
+
+  .bookmark-header {
+    color: $astral;
+    font-weight: bold;
+    font-size: 2rem;
+    // margin-top: -0.21425em;
+    line-height: 1.2857em;
+    // text-align: center;
+  }
+  .bookmark-subheader {
+    padding: 0;
+    margin-bottom: 0;
+    margin-top: .75rem;
+    font-weight: bold;
+    font-size: 0.85714286em;
+    text-transform: uppercase;
+    color: grey;//change to variable
+  }
+
+  .source {
+    padding: 0em;
+    margin-bottom: 0.14285714rem;
+    // font-weight: bold;
+    font-size: 0.85714286em;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.4);//change to variable
+  }
+
+  .tag-list {
+    list-style-type: none;
+    margin-top: 5px;
+    // margin-left: 10px;
+    padding-left: 0;
+    .tag.icon {
+      line-height: 1.75rem;
+      margin-right: 0;
+    }
+  }
+}
+
+.bookmark-category {
+  font-size: 1.5rem;
+  margin-top: 1.2rem;
+  margin-bottom: 2px;
+
+}
+
+
 // Bookmark-Details
+
 .likes {
   color: rgba(0, 0, 0, 0.4);
 }

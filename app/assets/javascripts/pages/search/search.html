@@ -1,12 +1,12 @@
 <section class="state-search center-content">
 
   <div class="center-text">
-    <h1>Search for a Bookmark</h1>
+    <h1 class="title">Search Bookmarks</h1>
 
     <section>
       <div class="search ui fluid huge category">
         <div class="ui icon input">
-          <input ng-model="searchQuery" class="prompt" type="text" placeholder="labels">
+          <input ng-model="searchQuery" ng-model-options="{debounce: 700}" class="prompt" type="text" placeholder="labels">
           <i class="search icon"></i>
         </div>
       </div><!-- /.search -->
@@ -15,46 +15,56 @@
   </div><!-- /.center-text -->
 
   <section ng-show="(filteredData = (model.bookmarks | filter:searchQuery)) && searchQuery">
-    <ul ng-repeat="bookmark in filteredData | filter: {tags:{name: searchQuery}} | orderBy: '-rating'">
 
-      <div class="ui raised centered card">
+    <ul id="bookmark-list" ng-repeat="bookmark in filteredData | filter: {tags:{name: searchQuery}} | orderBy: '-rating'">
+
+      <!-- bookmark -->
+      <section class="ui raised centered card bookmark">
+
+
+        <div class="content">
+          <a ui-sref="show({id: bookmark.id })">
+            <h2 class="bookmark-header">
+              {{ bookmark.display_name }}
+            </h2>
+          </a>
+          <h3 class="bookmark-subheader">{{ bookmark.source }}</h3>
+        </div><!-- /.content -->
+
+
         <div class="content">
 
-          <div class="header">{{ bookmark.display_name }}</div>
+          <h3 class="bookmark-category">Type of resource</h3>
+          <p class="capitalize">{{ bookmark.resource_type}}</p>
 
-          <div class="ui sub header">{{ bookmark.source }}</div>
-          <div class="meta">
-            <span class="category">{{ bookmark.resource_type}}</span>
-          </div>
-
+          <h3 class="bookmark-category">Description</h3>
           <!-- truncate description -->
-          <div class="description">
-            <b>Description:</b>
-            <p>{{ bookmark.description | limitTo:250}}
-              <span ng-if="bookmark.description.length > 150">...</span>
-            </p>
+          <p>{{ bookmark.description | limitTo:250}}
+            <span ng-if="bookmark.description.length > 150">...</span>
+          </p>
 
-            <b>Tags:</b>
-            <div ng-repeat="tag in bookmark.tags" >
-              <a ui-sref="tagBookmarkList({tagName: tag.name})">
-                - {{ tag.name }}
-              </a>
-            </div>
-            <br>
+          <h3 class="bookmark-category">Tags</h3>
+          <ul class="tag-list">
+          <div ng-repeat="tag in bookmark.tags" >
+            <a ui-sref="tagBookmarkList({tagName: tag.name})">
+              <li>
+                <i class="tag icon"></i>
+                {{ tag.name }}
+              </li>
+            </a>
+          </div>
+          </ul>
 
             <!-- TODO: truncate url -->
-            <p id="js-copyUrl">
-              <b>URL:</b>
-              <br>
+            <h3 class="bookmark-category">URL</h3>
+            <div id="js-copyUrl">
               <a ng-href="{{'http://' + bookmark.url}}" target="_blank">
-                {{bookmark.url}}
+                <p>{{bookmark.url}}</p>
               </a>
               <span ngclipboard data-clipboard-text="{{ bookmark.url }}">
-                <br>
-                <i class="paste icon"></i>
-                <span class="copy-text">copy url to clipboard</span>
+                <p class="copy-text" data-inverted="" data-tooltip="Copy URL to your clipboard" data-position="top left"><i class="paste icon"></i> copy url</p>
               </span>
-            </p>
+            </div>
 
           </div><!-- /description -->
         </div><!-- /content -->
@@ -70,8 +80,8 @@
           </div>
 
           <span class="right floated star">
-            <i class="thumbs up icon"></i>
             Likes {{ bookmark.rating }}
+            <i class="thumbs up icon"></i>
           </span>
         </div><!-- /.extra content -->
 
@@ -80,7 +90,7 @@
             More Info
           </div>
         </a>
-      </div><!-- /ui raised centered card -->
+      </section>
 
     </ul>
   </section>
