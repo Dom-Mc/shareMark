@@ -16,7 +16,7 @@
 
   <section ng-show="(filteredData = (model.bookmarks | filter:searchQuery)) && searchQuery">
 
-    <ul id="bookmark-list" ng-repeat="bookmark in filteredData | filter: {tags:{name: searchQuery}} | orderBy: '-rating'">
+    <ul id="bookmark-list" ng-repeat="bookmark in filteredData | filter: {tags:{name: searchQuery}} | orderBy: '-rating' track by $index">
 
       <!-- bookmark -->
       <section class="ui raised centered card bookmark">
@@ -45,7 +45,7 @@
 
           <h3 class="bookmark-category">Tags</h3>
           <ul class="tag-list">
-          <div ng-repeat="tag in bookmark.tags" >
+          <div ng-repeat="tag in bookmark.tags track by $index" >
             <a ui-sref="tagBookmarkList({tagName: tag.name})">
               <li>
                 <i class="tag icon"></i>
