@@ -26,4 +26,5 @@
   angular
     .module("shareMark")
     .component("tagList", TagList);
+
 })();

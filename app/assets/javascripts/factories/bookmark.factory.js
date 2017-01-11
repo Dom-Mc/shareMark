@@ -81,9 +81,11 @@
         return response.data;
       });
     } //end saveBookmark
+
   } //end BookmarkFactory
 
   angular
     .module('shareMark')
-    .factory('BookmarkFactory', BookmarkFactory);
+    .factory('BookmarkFactory', ['$http', '$stateParams', BookmarkFactory]);
+
 })();

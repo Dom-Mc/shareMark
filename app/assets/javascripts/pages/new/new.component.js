@@ -4,7 +4,7 @@
   var New = {
     templateUrl: 'pages/new/new.html',
     controllerAs: 'model',
-    controller: function (BookmarkFactory, TagFactory, $state, $q) {
+    controller: function (BookmarkFactory, TagFactory, $state) {
 
       var model = this;
       model.saveBookmark = saveBookmark;
@@ -47,4 +47,5 @@
   angular
     .module("shareMark")
     .component("new", New);
+
 })();

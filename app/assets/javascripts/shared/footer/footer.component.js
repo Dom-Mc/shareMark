@@ -8,4 +8,5 @@
   angular
     .module("shareMark")
     .component("footer", Footer);
+
 })();

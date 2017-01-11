@@ -1,11 +1,12 @@
 (function () {
-    'use strict';
+  'use strict'
 
-    var Navigation = {
-        templateUrl: 'shared/navigation/navigation.html'
-    };
+  var Navigation = {
+    templateUrl: 'shared/navigation/navigation.html'
+  }
 
-    angular
-      .module("shareMark")
-      .component("navigation", Navigation);
-})();
+  angular
+    .module("shareMark")
+    .component("navigation", Navigation);
+
+}());

@@ -11,9 +11,11 @@
         return response.data;
       });
     } //end getTags
+
   } //end TagFactory
 
   angular
     .module('shareMark')
-    .factory('TagFactory', TagFactory);
+    .factory('TagFactory', ['$http', TagFactory]);
+
 })();

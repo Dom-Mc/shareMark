@@ -8,4 +8,5 @@
   angular
     .module("shareMark")
     .component("home", Home);
+
 })();

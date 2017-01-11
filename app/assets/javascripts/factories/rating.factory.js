@@ -40,9 +40,11 @@
       }
       return bookmark.rating;
     }
+
   } //end RatingFactory
 
   angular
     .module('shareMark')
-    .factory('RatingFactory', RatingFactory);
+    .factory('RatingFactory', ['BookmarkFactory', RatingFactory]);
+
 })();

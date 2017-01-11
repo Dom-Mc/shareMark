@@ -12,4 +12,5 @@
   angular
     .module("shareMark")
     .component("bookmark", Bookmark);
+
 })();
