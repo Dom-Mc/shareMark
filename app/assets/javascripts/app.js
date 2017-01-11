@@ -4,7 +4,8 @@
   angular
     .module('shareMark', ['ngMessages', 'ui.router', 'templates', 'ngclipboard', 'ngTagsInput'])
 
-    .config(function($httpProvider, $urlRouterProvider, $stateProvider){
+    .config(['$httpProvider', '$urlRouterProvider', '$stateProvider', function ($httpProvider, $urlRouterProvider, $stateProvider) {
+      
       $httpProvider.useApplyAsync(true);
       $urlRouterProvider.otherwise('/');
 
@@ -39,6 +40,6 @@
         template: '<show></show>'
       })
 
-    });//end config
+    }]);//end config
 
 }());
