@@ -5,7 +5,7 @@
     templateUrl: 'pages/search/search.html',
     controllerAs: 'model',
 
-    controller: function controller(BookmarkFactory, RatingFactory) {
+    controller: function (BookmarkFactory, RatingFactory) {
 
       var model = this;
       model.getBookmarks = getBookmarks;

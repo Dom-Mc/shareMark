@@ -5,7 +5,7 @@
     templateUrl: 'shared/bookmark/bookmark-list.html',
     controllerAs: 'model',
 
-    controller: function controller($stateParams, BookmarkFactory) {
+    controller: function ($stateParams, BookmarkFactory) {
       var model = this;
       model.name = $stateParams.tagName;
       model.getTaggedBookmarks = getTaggedBookmarks;

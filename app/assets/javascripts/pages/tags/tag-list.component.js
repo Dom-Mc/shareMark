@@ -5,7 +5,7 @@
     templateUrl: 'pages/tags/tag-list.html',
     controllerAs: 'model',
 
-    controller: function controller(TagFactory) {
+    controller: function (TagFactory) {
       var model = this;
       model.getTags = getTags;
 

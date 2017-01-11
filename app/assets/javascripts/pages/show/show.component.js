@@ -5,7 +5,7 @@
     templateUrl: 'pages/show/show.html',
     controllerAs: 'model',
 
-    controller: function controller(BookmarkFactory, $stateParams) {
+    controller: function (BookmarkFactory, $stateParams) {
       var model = this;
       model.getBookmark = getBookmark;
 

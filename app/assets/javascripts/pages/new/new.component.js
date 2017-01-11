@@ -4,7 +4,7 @@
   var New = {
     templateUrl: 'pages/new/new.html',
     controllerAs: 'model',
-    controller: function controller(BookmarkFactory, TagFactory, $state, $q) {
+    controller: function (BookmarkFactory, TagFactory, $state, $q) {
 
       var model = this;
       model.saveBookmark = saveBookmark;
