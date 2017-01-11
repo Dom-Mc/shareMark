@@ -5,7 +5,7 @@
     templateUrl: 'pages/search/search.html',
     controllerAs: 'model',
 
-    controller: function (BookmarkFactory, RatingFactory) {
+    controller: ['BookmarkFactory', 'RatingFactory', function (BookmarkFactory, RatingFactory) {
 
       var model = this;
       model.getBookmarks = getBookmarks;
@@ -35,7 +35,7 @@
           return response.data;
         });
       } //end getVote
-    } //end controller
+    }] //end controller
 
   }; //end Search
 

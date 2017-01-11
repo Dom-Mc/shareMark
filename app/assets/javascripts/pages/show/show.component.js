@@ -5,7 +5,7 @@
     templateUrl: 'pages/show/show.html',
     controllerAs: 'model',
 
-    controller: function (BookmarkFactory, $stateParams) {
+    controller: ['BookmarkFactory', '$stateParams', function (BookmarkFactory, $stateParams) {
       var model = this;
       model.getBookmark = getBookmark;
 
@@ -19,7 +19,7 @@
             return model.bookmark = responseData;
           });
       } //end getBookmark
-    } //end controller
+    }] //end controller
 
   }; //end Show
 

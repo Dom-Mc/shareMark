@@ -4,7 +4,7 @@
   var New = {
     templateUrl: 'pages/new/new.html',
     controllerAs: 'model',
-    controller: function (BookmarkFactory, TagFactory, $state) {
+    controller: ['BookmarkFactory', 'TagFactory', '$state', function (BookmarkFactory, TagFactory, $state) {
 
       var model = this;
       model.saveBookmark = saveBookmark;
@@ -40,7 +40,7 @@
           return model.error = response.errors;
         }
       } //end saveBookmarkResponse
-    } //end controller
+    }] //end controller
 
   }; //end New
 

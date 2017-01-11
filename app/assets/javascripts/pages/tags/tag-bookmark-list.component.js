@@ -5,7 +5,7 @@
     templateUrl: 'shared/bookmark/bookmark-list.html',
     controllerAs: 'model',
 
-    controller: function ($stateParams, BookmarkFactory) {
+    controller: ['$stateParams', 'BookmarkFactory', function ($stateParams, BookmarkFactory) {
       var model = this;
       model.name = $stateParams.tagName;
       model.getTaggedBookmarks = getTaggedBookmarks;
@@ -20,7 +20,7 @@
             return model.bookmarks = responseData;
           });
       } //end getBookmarks
-    } //end controller
+    }] //end controller
 
   }; //end TagBookmarkList
 

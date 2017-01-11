@@ -5,7 +5,7 @@
     templateUrl: 'pages/tags/tag-list.html',
     controllerAs: 'model',
 
-    controller: function (TagFactory) {
+    controller: ['TagFactory', function (TagFactory) {
       var model = this;
       model.getTags = getTags;
 
@@ -19,7 +19,7 @@
             return model.tags = responseData;
           });
       } //end getTags
-    } //end controller
+    }] //end controller
 
   }; //end TagList
 
