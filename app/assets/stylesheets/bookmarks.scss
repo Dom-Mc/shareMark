@@ -154,19 +154,38 @@ form {
   margin-bottom: 5rem;
 }
 .ui.bottom.attached.button {
+  width: 35%;
+  margin: 0 auto 2rem;
+  font-size: 1.14285714rem;
   background: $astral;
   color: $smoke;
 }
 
+// Search
+.state-search {
+  .button-show {
+    display: block;
+    font-size: 1.14285714rem;
+  }
+  // .ui.button.large {
+  //   display: block;
+  //   margin: 0 auto 20%;
+  // }
+}
+
+
+
+// Footer Social Icons
+.icons-social {
+  .ui.circular.icon.button {
+    padding: .6rem;
+  }
+}
 
 
 // Voting Icons
 #vote {
   cursor: pointer;
-  // body > div > div > ui-view > search > section > section > div > ul:nth-child(1) > div > div.extra.content > div > i.left.floated.thumbs.up.icon.large {
-  //   transition: all .2s ease-in-out;
-  //   transform: scale(1.1);
-  // }
   .thumbs.icon {
     transition: all .2s ease-in-out;
     color: rgba(0, 0, 0, 0.6);
@@ -178,15 +197,32 @@ form {
   .thumbs.icon:not(.outline) {
     color: $astral;
   }
-
 }
 
+.state-search {
+  // NOTE: Thumbs up icon - Likes
+  span > .thumbs.up.icon {
+  // span .thumbs.up.icon  {
+    margin-left: .2rem;
+    font-size: 1.1rem;
+  }
+}
 
 #js-copyUrl {
-    cursor: pointer;
+  .paste.icon {
+    // display: inline-block;
+    // // opacity: 1;
+    // // margin: 0em 0.25rem 0em 0em;
+    // width: 1.18em;
+    // height: 1em;
+    font-size: 1.4em;
+    color: rgba(0, 0, 0, 0.68);
+  }
   .copy-text {
     color: #AAAAAA;
+    cursor: pointer;
     font-size: 1rem;
+    display: inline-block;
     margin-top: 5px;
   }
 }
@@ -303,35 +339,37 @@ form {
 .footer {
   background-color: $github;
   font-size: 1.3rem;
-  height: 75px;
+  font-weight: 300;
+  padding: 2.5rem;
   text-align: center;
 
-  i.square.large.icon {
-    width: 1.3rem;
-    vertical-align: baseline;
-    font-size: 1.2em;
-  }
-  .copyright {
-    margin-right: 5px;
+  .copyright a {
+    margin: 0 5px;
   }
 }
 
 
 
 //NOTE: Sticky Footer
-html, body {
-  height: 100%;
-  margin: 0;
-}
-.wrapper {
-  // NOTE: https://css-tricks.com/couple-takes-sticky-footer/
+body {
   min-height: 100%;
-  /* Equal to height of footer */
-  /* But also accounting for potential margin-bottom of last child */
-  margin-bottom: -100px;
+  display: flex;
+  flex-direction: column;
 }
-.footer {
-  height: 100px;
+html {
+  height: 100%;
+}
+// html, body {
+//   height: 100%;
+//   margin: 0;
+// }
+.wrapper {
+  flex: 1;
+
+  // min-height: 100%;
+  // /* Equal to height of footer */
+  // /* But also accounting for potential margin-bottom of last child */
+  // margin-bottom: -100px;
 }
 
 
@@ -404,6 +442,10 @@ html, body {
   z-index: 100;
   .search .ui {
     margin-bottom: 5rem;
+  }
+  // NOTE: Bookmark
+  .extra-content {
+    padding-bottom: 1rem;
   }
 }
 
