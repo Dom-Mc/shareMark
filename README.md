@@ -1,6 +1,6 @@
 # shareMark
 
-Sharemark is a community driven application where users have the ability to share a wide variety of learning resources and to participate through voting. The application was built with Rails 5 , Angular 1.5, and styled with Semantic-UI.
+[shareMark](https://dom-mckellar-sharemark.herokuapp.com/) is a community driven application where users have the ability to share a wide variety of learning resources and to participate through voting. The application was built with Rails 5 , Angular 1.5, and styled with Semantic-UI.
 
 ## Installation
 #### (Step 1) Clone a local copy of the `shareMark` repo.
@@ -29,10 +29,10 @@ rake bower:install
 - Ability to stream videos via youtube's api
 
 ## Creator
-
-Dom McKellar
-* http://newme.io/
-* https://github.com/Dom-Mc
+###### [Dominic McKellar](https://twitter.com/_dom_mc)
+* [Website | domckellar.com](http://domckellar.com/)
+* [Blog | newme.io](http://newme.io/)
+* [Github | Dom-Mc](https://github.com/Dom-Mc)
 
 ## License
 
