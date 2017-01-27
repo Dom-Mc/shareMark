@@ -1,112 +1,131 @@
-<main class="state-new">
-  <h2 class="title">Create a Bookmark</h2>
+<main>
+  <h2 class="page-header">Create a Bookmark</h2>
 
-  <div class="ui raised very padded text container segment">
-    <ul ng-repeat="formError in model.error" ng-if="model.error" class="rails-error">
+  <div class="content-panel">
+    <ul ng-repeat="formError in model.error" ng-if="model.error" class="form__error--backend">
       <li>{{formError}}</li>
     </ul>
 
-    <form name="form" ng-submit="model.saveBookmark()" class="ui form">
+    <form name="form" ng-submit="model.saveBookmark()" class="ui form" novalidate>
 
-      <!-- Display Name input-->
-      <section>
-        <div class="warning"  ng-messages="form.display_name.$error" ng-if="form.display_name.$touched">
-          <div ng-message="required">Display Name is required.</div>
-          <div ng-message="minlength">Display Name must be at least 5 characters.</div>
-          <div ng-message="minlength">Display Name must be less than 75 characters.</div>
-        </div><!-- /ng-message -->
-
-        <div class="field ui">
+      <!-- Display Name -->
+      <section class="form__section">
+        <div class="field" ng-class="{'error': form.display_name.$touched &&  form.display_name.$invalid}">
           <label for="display_name">Display Name</label>
-          <div class="icon ui right input">
-            <input ng-model="model.newBookmark.display_name" type="text" name="display_name" placeholder="Descriptive name" ng-minlength="5" ng-maxlength="75" required>
+
+          <div class="ui icon right input">
+            <input ng-model="model.newBookmark.display_name" type="text" name="display_name" placeholder="Descriptive name"
+              ng-minlength="5"
+              ng-maxlength="75"
+              required>
             <i ng-class="[model.validationClass(form.display_name) ]"></i>
-          </div><!-- /.icon -->
-        </div><!-- /.field -->
+          </div><!-- /input -->
+
+          <div ng-messages="form.display_name.$error" ng-if="form.display_name.$touched">
+            <div class="form--error-message" ng-message="required">Display Name is required.</div>
+            <div class="form--error-message" ng-message="minlength">Display Name must be at least 5 characters.</div>
+            <div class="form--error-message" ng-message="minlength">Display Name must be less than 75 characters.</div>
+          </div><!-- /ng-messages -->
+        </div><!-- /field -->
       </section>
 
-      <!-- Description textarea-->
-      <section>
-        <div class="warning"  ng-messages="form.description.$error" ng-if="form.description.$touched">
-          <div ng-message="required">Description is required.</div>
-          <div ng-message="minlength">Description must be at least 15 characters.</div>
-          <div ng-message="minlength">Description must be less than 2500 characters.</div>
-        </div><!-- /ng-message -->
-
-        <div class="ui field">
-          <i ng-class="[model.validationClass(form.description) ]" class="float-right"></i>
+      <!-- Description -->
+      <section class="form__section">
+        <div class="field" ng-class="{'error': form.description.$touched &&  form.description.$invalid}">
           <label for="description">Description</label>
-          <textarea name="description" ng-model="model.newBookmark.description" rows="3" ng-minlength="15" ng-maxlength="2500" placeholder="Provide a detailed description about the bookmark" required>
+
+          <textarea name="description" ng-model="model.newBookmark.description" rows="3" placeholder="Provide a detailed description about the bookmark"
+            ng-minlength="15"
+            ng-maxlength="2500"
+            required>
           </textarea>
-        </div><!-- /.field -->
+        </div><!-- /field -->
+
+        <div ng-messages="form.description.$error" ng-if="form.description.$touched">
+          <div class="form--error-message" ng-message="required">Description is required.</div>
+          <div class="form--error-message" ng-message="minlength">Description must be at least 15 characters.</div>
+          <div class="form--error-message" ng-message="minlength">Description must be less than 2500 characters.</div>
+        </div><!-- /ng-messages -->
       </section>
 
-      <!-- Source input-->
-      <section>
-        <div class="warning"  ng-messages="form.source.$error" ng-if="form.source.$touched">
-          <div ng-message="required">Source is required.</div>
-          <div ng-message="minlength">Source must be at least 3 characters.</div>
-          <div ng-message="minlength">Source must be less than 50 characters.</div>
-        </div><!-- /ng-message -->
-
-        <div class="ui field">
+      <!-- Source -->
+      <section class="form__section">
+        <div class="field" ng-class="{'error': form.source.$touched && form.source.$invalid}">
           <label for="source">Source</label>
           <div class="icon ui right input">
-            <input ng-model="model.newBookmark.source" type="text" name="source" placeholder="Name of the source" ng-minlength="3" ng-maxlength="50" required>
+            <input ng-model="model.newBookmark.source" type="text" name="source" placeholder="Name of the source"
+              ng-minlength="3"
+              ng-maxlength="50"
+              required>
             <i ng-class="[model.validationClass(form.source) ]"></i>
-          </div><!-- /.icon -->
-        </div><!-- /.field -->
+          </div><!-- /icon -->
+
+          <div ng-messages="form.source.$error" ng-if="form.source.$touched">
+            <div class="form--error-message" ng-message="required">Source is required.</div>
+            <div class="form--error-message" ng-message="minlength">Source must be at least 3 characters.</div>
+            <div class="form--error-message" ng-message="minlength">Source must be less than 50 characters.</div>
+          </div><!-- /ng-messages -->
+        </div><!-- /field -->
       </section>
 
-      <section>
-        <div class="warning" ng-messages="form.resource_type.$error" ng-if="form.resource_type.$touched">
-          <div ng-message="required">Type of Resource is required.</div>
-        </div><!-- /ng-message -->
-
-        <div class="ui field">
-          <!-- <i ng-class="[model.validationClass(form.resource_type) ]" class="float-right"></i> -->
+      <!-- Type of Resource -->
+      <section class="form__section">
+        <div class="field" ng-class="{'error': form.resource_type.$touched && form.resource_type.$invalid && form.resource_type}">
           <label for="resource_type">Type of Resource</label>
-          <select name="resource_type" ng-model="model.newBookmark.resource_type" ng-options="resource_types for resource_types in model.resource_types" required class="ui search dropdown">
+          <select name="resource_type" ng-model="model.newBookmark.resource_type" ng-options="resource_types for resource_types in model.resource_types" class="ui search dropdown"
+            required>
             <option ng-selected="true" value="">-Select-</option>
           </select>
-        </div><!-- /.field -->
+
+          <div ng-messages="form.resource_type.$error" ng-if="form.resource_type.$touched">
+            <div class="form--error-message" ng-message="required">Type of Resource is required.</div>
+          </div><!-- /ng-messages -->
+        </div><!-- /field -->
       </section>
 
-      <!-- {{ ng-if model.newBookmark.tag.length > 0 && model.newBookmark.tag}} -->
-      <section id="ngtaginput">
-        <div class="warning" ng-messages="form.resource_type.$error" ng-if="form.resource_type.$touched">
-          <div ng-message="required">Type of Resource is required.</div>
-        </div><!-- /ng-message -->
-
+      <!-- Tags -->
+      <section id="ngtaginput" class="form__section">
         <label for="tag">Tags</label>
-        <tags-input ng-model="model.newBookmark.tag" class="ngtaginput-error" display-property="name" placeholder="Add a label" max-results-to-show="50" min-length="2" max-length="45" min-tags="1" max-tags="5" add-on-space="false" add-on-comma="true" add-on-blur="true" add-on-paste="true" required>
+        <tags-input ng-model="model.newBookmark.tag" class="ngtaginput-error ng-taginput" placeholder="Add a label"
+          display-property="name"
+          add-on-space="false"
+          add-on-comma="true"
+          add-on-blur="true"
+          add-on-paste="true"
+          max-results-to-show="50"
+          min-length="2"
+          max-length="45"
+          min-tags="1"
+          max-tags="5"
+          required>
 
-          <auto-complete source="model.loadTags($query)" debounce-delay="0" load-on-down-arrow="true" min-length="0" max-results-to-show="100" ></auto-complete>
-
+          <auto-complete source="model.loadTags($query)"
+            debounce-delay="0"
+            load-on-down-arrow="true"
+            min-length="0"
+            max-results-to-show="100">
+          </auto-complete>
         </tags-input>
       </section>
 
-      <section>
-        <div class="warning" ng-messages="form.url.$error" ng-if="form.url.$touched">
-          <div ng-message="required">URL is required.</div>
-          <div ng-message="minlength">URL must be at least 5 characters.</div>
-          <div ng-message="minlength">URL must be less than 250 characters.</div>
-        </div>
-        <!-- /ng-message -->
-
-        <div class="ui field">
+      <section class="form__section">
+        <div class="field" ng-class="{'error': form.url.$touched && form.url.$invalid}">
           <label for="url">URL</label>
           <div class="icon ui right input">
             <input ng-model="model.newBookmark.url" type="text" name="url" placeholder="Link to the bookmark" ng-minlength="5" ng-maxlength="250" required>
             <i ng-class="[model.validationClass(form.url) ]" class="float-right"></i>
-          </div><!-- /.field -->
-        </section>
+          </div><!-- /input -->
 
+          <div class="form--error-message" ng-messages="form.url.$error" ng-if="form.url.$touched">
+            <div ng-message="required">URL is required.</div>
+            <div ng-message="minlength">URL must be at least 5 characters.</div>
+            <div ng-message="minlength">URL must be less than 250 characters.</div>
+          </div><!-- /ng-message -->
+        </div><!-- /field -->
+      </section>
 
-        <div class="row pad">
-          <button ng-disabled="form.$invalid" class="ui linkedin button" type="submit" value="create new">Create New Bookmark</button>
-        </div>
+      <button ng-disabled="form.$invalid" class="btn btn--default" ng-class="{'btn--disabled': form.$invalid}" type="submit" value="create new">Create New Bookmark</button>
 
-      </form>
-    </div>
-  </main>
+    </form>
+  </div><!-- content-panel -->
+</main>

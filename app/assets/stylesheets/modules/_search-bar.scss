@@ -1,0 +1,17 @@
+/*-------------------------------------------------
+  MODULE: Search-bar
+-------------------------------------------------*/
+
+.search-bar--centered {
+  text-align: center;
+  margin-bottom: 5rem;
+  position: relative;
+}
+
+.ui.input input {
+  border-radius: 500rem;
+}
+
+.search-bar--large.ui.icon.input {
+  font-size: 1.9rem;
+}

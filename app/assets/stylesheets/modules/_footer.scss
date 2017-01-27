@@ -1,0 +1,20 @@
+/*-------------------------------------------------
+  MODULE: Footer
+-------------------------------------------------*/
+
+.footer {
+  background-color: $github;
+  color: $smoke;
+  font-size: 1.3rem;
+  padding: 2.5rem;
+  text-align: center;
+
+  &__copyright {
+    font-weight: 200;
+  }
+
+  &__copyright a {
+    color: $smoke;
+    margin: 0 5px;
+  }
+}

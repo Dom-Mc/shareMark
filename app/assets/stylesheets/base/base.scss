@@ -1,0 +1,19 @@
+/*-------------------------------------------------
+  BASE: Base
+-------------------------------------------------*/
+
+html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+  // NOTE: Set space underneath nav and page content
+  padding-top: 10%;
+  //NOTE: Set for sticky Footer
+  // min-height: 100%;
+  min-height: 100vh;
+
+}

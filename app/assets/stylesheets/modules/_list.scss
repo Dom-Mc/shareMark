@@ -1,0 +1,15 @@
+/*-------------------------------------------------
+  MODULE: List
+-------------------------------------------------*/
+
+.ui.list {
+  font-size: 1.5rem;
+}
+
+.ui.animated.list {
+  margin: .75rem;
+}
+
+.ui.animated.list:not(.horizontal) > .item:hover {
+  padding-left: .5rem;
+}

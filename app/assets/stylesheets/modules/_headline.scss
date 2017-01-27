@@ -1,0 +1,19 @@
+/*-------------------------------------------------
+  MODULE: Headline/Title
+-------------------------------------------------*/
+
+.page-header {
+  font-size: 3rem;
+  margin-bottom: 5%;
+  text-align: center;
+
+  &--xlarge {
+    font-size: 4rem;
+    text-align: center;
+  }
+
+  &__subhead {
+    margin-top:0;
+    text-align: center;
+  }
+}

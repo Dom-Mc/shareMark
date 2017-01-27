@@ -1,0 +1,109 @@
+/*-------------------------------------------------
+  MODULE: Form
+-------------------------------------------------*/
+
+.form {
+
+  &__section {
+    margin-top: 1.75rem;
+
+    // NOTE: Add extra space for submit button
+    &:last-child {
+      margin-bottom: 3rem;
+    }
+  }
+}
+
+// Form errors from Rails
+.form__error--backend {
+  list-style-type: none;
+  color: red;
+}
+
+// Input error messages (underneath)
+.form--error-message {
+  color: #9F3A38;
+  margin-top: 3px;
+}
+
+// Override form label styles
+.ui.form .field > label {
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-left: 1px;
+}
+
+// Eliminate space around fields
+.ui.form {
+  .field {
+    margin: 0;
+  }
+
+}
+
+// ngTagsInput Module
+// NOTE: Use id to override module styles
+#ngtaginput {
+  label {
+    display: block;
+    margin: 0 1px 0.28571429rem 0;
+    color: rgba(0, 0, 0, 0.87);
+    font-size: 1.4rem;
+    font-weight: 500;
+    text-transform: none;
+  }
+
+  input {
+    margin: 2px;
+    padding: 0 0 0 5px;
+    float: left;
+    height: 26px;
+    border: none;
+    transition: color 0.1s ease;
+    vertical-align: middle;
+  }
+
+  tags-input {
+    &:focus {
+      color: rgba(0, 0, 0, 0.95);
+      border-color: #85B7D9;
+      border-radius: 0.28571429rem;
+      background: #FFFFFF;
+      box-shadow: 0px 0em 0em 0em rgba(34, 36, 38, 0.35) inset;
+    }
+  }
+  tags-input .tags .tag-item{
+    color: #fff;
+    background: #428bca;
+    border: 1px solid #357ebd;
+    border-radius: 4px;
+  }
+
+  .tags {
+    padding: 3px;
+    font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif;
+    margin: 0em;
+    outline: none;
+    -webkit-appearance: none;
+    tap-highlight-color: rgba(255, 255, 255, 0);
+    line-height: 1.2142em;
+    /* padding: 0.67861429em 1em; */
+    font-size: 1em;
+    background: #FFFFFF;
+    border: 1px solid rgba(34, 36, 38, 0.15);
+    color: rgba(0, 0, 0, 0.87);
+    border-radius: 0.28571429rem;
+    box-shadow: 0em 0em 0em 0em transparent inset;
+    -webkit-transition: color 0.1s ease, border-color 0.1s ease;
+    transition: color 0.1s ease, border-color 0.1s ease;
+  }
+
+  // Error styles
+  //.ngtaginput-error.ng-pristine .tags {
+  //  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  //  border: 1px solid #ccc;
+  //}
+  //.ngtaginput-error.ng-pristine.ng-empty.ng-touched {
+  //  border: 1px solid red;
+  //}
+}

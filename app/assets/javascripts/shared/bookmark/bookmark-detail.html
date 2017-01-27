@@ -1,55 +1,69 @@
-<section class="centered card ui raised bookmark">
-  <div class="content">
+<section class="c-bookmark ui card">
 
-  <div class="likes">
-    <span class="right floated star">
-      <i class="thumbs up icon"></i>
-      Likes {{ model.bookmark.rating }}
-    </span>
-  </div>
+  <div class="c-bookmark__header">
+    <a ui-sref="show({id: model.bookmark.id })">
+      <h2 class="c-bookmark__title">
+        {{ model.bookmark.display_name }}
+      </h2>
+    </a>
+    <h3 class="c-bookmark__subtitle">{{ model.bookmark.source }}</h3>
+  </div><!-- /c-bookmark__header -->
 
+  <div class="c-bookmark__content">
 
-    <div class="bookmark-header">{{ model.bookmark.display_name }}</div>
+    <h3 class="c-bookmark__category">Type of resource</h3>
+    <p class="titlecase">{{ model.bookmark.resource_type}}</p>
 
-    <div class="ui sub header">{{ model.bookmark.source }}</div>
+    <h3 class="c-bookmark__category">Description</h3>
 
-    <div class="meta">
-      <span class="category">{{ model.bookmark.resource_type}}</span>
-    </div>
+    <!-- truncate description -->
+    <p>{{ model.bookmark.description | limitTo:250}}
+      <span ng-if="model.bookmark.description.length > 150">...</span>
+    </p>
 
-    <div class="description">
-      <b>Description:</b>
-      <p>{{ model.bookmark.description }}</p>
-
-      <b>Tags:</b>
-      <div ng-repeat="tag in model.bookmark.tags" >
+    <h3 class="c-bookmark__category">Tags</h3>
+    <ul class="c-bookmark__tag-list">
+      <div class="c-bookmark__tag" ng-repeat="tag in model.bookmark.tags track by $index" >
         <a ui-sref="tagBookmarkList({tagName: tag.name})">
-          - {{ tag.name }}
+          <li>
+            <i class="tag icon"></i>
+            {{ tag.name }}
+          </li>
         </a>
-      </div>
-      <br>
+      </div><!-- c-bookmark__tag-list -->
+    </ul>
 
-      <!-- TODO: truncate url -->
-      <p id="js-copyUrl">
-        <b>URL:</b>
-        <br>
-        <a ng-href="{{'http://' + model.bookmark.url}}" target="_blank">
-          {{model.bookmark.url}}
-        </a>
-        <span ngclipboard data-clipboard-text="{{ model.bookmark.url }}">
-          <br>
-          <i class="paste icon"></i>
-          <span class="copy-text">copy url to clipboard</span>
-        </span>
-      </p>
+    <h3 class="c-bookmark__category">URL</h3>
+      <p><a ng-href="{{'http://' + model.bookmark.url}}" target="_blank">{{model.bookmark.url}}</a></p>
 
-    </div><!-- /.description -->
-  </div><!-- /.content -->
+      <span ngclipboard data-clipboard-text="{{ model.bookmark.url }}">
+        <p>
+          <div class="c-bookmark--copy-url" data-inverted="" data-tooltip="Copy URL to your clipboard" data-position="top center">
+            <i class="paste icon"></i> copy url
+          </div>
+        </p>
+      </span>
+  </div><!-- /c-bookmark__content -->
 
-  <!-- <a ui-sref="show({id: model.bookmark.id })">
-    <div class="ui bottom attached button">
+  <div class="extra content">
+    <!-- <div class="icon--vote">
+      <i ng-click="model.getVote('upVote', bookmark)" ng-class="{'outline':
+      !(model.bookmark.rating > model.bookmark.previousRating)}" class="left floated thumbs up icon large"></i>
+
+      <i ng-click="model.getVote('downVote', bookmark)" ng-class="{'outline':
+      !(model.bookmark.rating < model.bookmark.previousRating)}" class="left floated thumbs down icon large"></i>
+    </div> -->
+    <!-- icon--vote -->
+
+    <span class="right floated star">
+      Likes {{ model.bookmark.rating }}
+      <i class="thumbs up icon"></i>
+    </span>
+  </div><!-- /extra content -->
+
+  <!-- <a ui-sref="show({id: model.bookmark.id})">
+    <div class="btn btn--default">
       More Info
     </div>
   </a> -->
-
 </section>

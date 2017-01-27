@@ -11,29 +11,39 @@
       model.getBookmarks = getBookmarks;
       model.bookmarkSortOrder = "-rating";
       model.getVote = getVote;
+      model.showMoreBookmarks = showMoreBookmarks;
+      model.limit = 3;
 
       model.$onInit = function () {
         getBookmarks();
       };
 
       function getBookmarks() {
-        return BookmarkFactory.getBookmarks()
+        BookmarkFactory.getBookmarks()
           .then(function (responseData) {
-            return model.bookmarks = responseData;
+            model.bookmarks = responseData;
           });
       } //getBookmarks
 
-      // NOTE: record and limit votes
+      // NOTE: Load more bookmarks
+      function showMoreBookmarks(){
+        model.limit += 3;
+      }
+
+      // NOTE: Record and limit votes
       function getVote(value, bookmark) {
         if (!bookmark.hasOwnProperty('previousRating')) {
+          // debugger
           bookmark.previousRating = bookmark.rating;
         }
 
+// NOTE:  necessary????
         var newVote = RatingFactory.getVote(value, bookmark);
 
-        return BookmarkFactory.saveBookmark(bookmark).then(function (response) {
-          return response.data;
-        });
+        return BookmarkFactory.saveBookmark(bookmark)
+          .then(function (response) {
+            return response.data;
+          });
       } //end getVote
     }] //end controller
 

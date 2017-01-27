@@ -1,30 +1,23 @@
-<section class="state-tags">
-
-  <h1 class="ui horizontal divider header">
+<main>
+  <h1 class="page-header">
     <i class="tags icon"></i>
-    share<span class="logo">mark</span> Tags
+    Bookmark Tags
   </h1>
 
-  <div class="ui raised very padded text container segment">
-
+  <div class="content-panel">
     <section ng-repeat="tag in model.tags | orderBy: 'name'">
-
-      <div class="ui middle aligned animated list">
+      <div class="ui aligned animated list">
         <div class="item">
-
           <div class="content">
-            <a ui-sref="tagBookmarkList({tagName: tag.name})" class="header">
+
+            <a ui-sref="tagBookmarkList({tagName: tag.name})">
               <i class="tag icon"></i>
               {{ tag.name }}
             </a>
 
-          </div>
+          </div><!-- /content -->
         </div><!-- /item -->
-
       </div><!-- /ui middle aligned animated list -->
-
     </section>
-
-  </div><!-- /ui raised very padded text container segment -->
-
-</section>
+  </div><!-- /content-panel -->
+</main>

@@ -13,5 +13,10 @@
  */
 
 // *= require ng-tags-input
+
 @import "semantic-ui";
-@import "bookmarks";
+@import "utilities/index";
+@import "base/index";
+@import "layouts/index";
+@import "modules/index";
+@import "shame";

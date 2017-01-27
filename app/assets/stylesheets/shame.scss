@@ -1,0 +1,20 @@
+/*-------------------------------------------------
+  SHAME: Needs a home
+-------------------------------------------------*/
+
+.float-right {
+  float: right;
+}
+
+i.float-right {
+  margin-right: 9px;
+}
+
+// TODO: bottom buttons - change
+.ui.bottom.attached.button {
+  width: 35%;
+  margin: 0 auto 2rem;
+  font-size: 1.14285714rem;
+  background: $astral;
+  color: $smoke;
+}

@@ -1,0 +1,65 @@
+/*-------------------------------------------------
+  UTILITIES: Helpers
+-------------------------------------------------*/
+
+%center-text {
+  text-align: center;
+}
+
+%no-bullets {
+  list-style: none;
+  margin-top: 0;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+%clearfix {
+  &::before,
+  &::after {
+    content: "";
+    display: table;
+  }
+  &::after {
+    clear: both;
+  }
+}
+
+%center {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+%ir {
+  background-color: transparent;
+  border: 0;
+  overflow: hidden;
+  &::before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 100%;
+  }
+}
+
+// Helper classes
+.center-vertical {
+  position: relative;
+  top: 50%;
+  color: $smoke;
+  // transform: translateY(-50%);
+}
+
+.truncate {
+  width: 25px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.titlecase {
+  text-transform: capitalize;
+}
+
+.center-text {
+  text-align: center;
+}

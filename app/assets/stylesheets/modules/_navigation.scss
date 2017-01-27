@@ -1,0 +1,19 @@
+/*-------------------------------------------------
+  MODULE: Navigation
+-------------------------------------------------*/
+
+.ui.top.fixed.menu {
+  height: 5rem;
+
+  a {
+    font-size: 1.2rem;
+    flex-grow: 1;
+    text-align: center;
+  }
+}
+
+.menu {
+  &__logo {
+    font-weight: 600;
+  }
+}

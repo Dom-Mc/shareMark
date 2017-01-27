@@ -1,0 +1,43 @@
+/*-------------------------------------------------
+MODULE: Icon
+-------------------------------------------------*/
+
+// Footer Social Icons
+.icons--social {
+  .ui.circular.icon.button {
+    padding: .6rem;
+  }
+}
+
+// Logo (Bookmark) Icon
+.icon--logo {
+  color: red;
+}
+
+.icon.paste {
+  font-size: 1.4em;
+  color: rgba(0, 0, 0, 0.68);
+}
+
+// Bookmark-Details
+.icon--thumbs {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+// Voting Icons
+.icon--vote {
+  cursor: pointer;
+
+  .icon.thumbs {
+    transition: all .2s ease-in-out;
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  .icon.thumbs:hover {
+    transform: scale(1.5);
+  }
+
+  .icon.thumbs:not(.outline) {
+    color: $astral;
+  }
+}
