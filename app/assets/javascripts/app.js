@@ -4,10 +4,13 @@
   angular
     .module('shareMark', ['ngMessages', 'ui.router', 'templates', 'ngclipboard', 'ngTagsInput'])
 
-    .config(['$httpProvider', '$urlRouterProvider', '$stateProvider', function ($httpProvider, $urlRouterProvider, $stateProvider) {
+    .config(['$httpProvider', '$urlRouterProvider', '$stateProvider', '$locationProvider', function ($httpProvider, $urlRouterProvider, $stateProvider, $locationProvider) {
 
       $httpProvider.useApplyAsync(true);
       $urlRouterProvider.otherwise('/');
+
+      // NOTE: Use the HTML5 History API
+      $locationProvider.html5Mode(true);
 
       $stateProvider
       .state('home', {
